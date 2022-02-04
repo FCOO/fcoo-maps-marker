@@ -1,0 +1,1091 @@
+/***********************************************
+    fcoo-maps-marker.scss,
+
+    (c) 2021, FCOO
+
+    https://github.com/FCOO/fcoo-maps-marker
+    https://github.com/FCOO
+
+
+************************************************/
+/************************************************************
+INCLUDE-JQUERY-BOOTSTRAP-VARIABLES
+USED IN FOR OTHER PACKAGES TO INCLUDE ALL SCSS-FILES NEEDED
+TO HAVE ACCESS TO ALL BOOTSTRAP AND FCOO/JQUERY-BOOTSTRAP SCSS-VARIABLES
+************************************************************/
+/***********************************************
+JQUERY-BOOTSTRAP: Set and adjust bootstrap default values
+************************************************/
+/************************************************************
+BOOTSTRAP-VARIABLES
+************************************************************/
+/***********************************************
+FUNCTIONS TO CONVETRT FROM PX TO REM
+To make it easier to design and calculate dimensions
+the function rem defined
+************************************************/
+/***********************************************
+ADJUST BOOTSTRAP DEFAULT VALUES
+************************************************/
+/***********************************************
+Adjust bootstrap-variables to only have dimensions
+in integer px from rem
+************************************************/
+/*Not used. No lg-buttons
+$input-btn-padding-y-lg: .75rem;
+$input-btn-padding-x-lg: $input-btn-padding-y-lg;
+
+Syntax and relations:
+In Bootstrap
+    $input-btn-padding(-x|-y)[-sm|-lg]
+    $btn-padding(-x|-y)[-sm|-lg] = $input-btn-padding(-x|-y)[-sm|-lg]
+
+
+
+In jquery-bootstrap
+    $input-btn-padding-x-sm = 3px
+    $input-btn-padding-y-sm = 4px
+
+    xs-versions added
+    $input-btn-padding-x-xs = 2px
+    $input-btn-padding-y-xs = 3px
+
+*/
+/************************************************************
+Including "size" xs as in Bootstrap 4
+************************************************************/
+/************************************************************
+Add line-heights for xs
+************************************************************/
+/************************************************************
+Border-colors
+************************************************************/
+/************************************************************
+Make all font-size and margin for header (<h1>, <h2>,...<h6>)
+releative to container (rem -> em)
+************************************************************/
+/* Defalut not changed:
+$font-size-base         : 1rem !default;
+$spacer                 : 1rem !default;
+*/
+/************************************************************
+Set margin for buttons in block
+************************************************************/
+/************************************************************
+Adjust dropdown-menu
+************************************************************/
+/************************************************************
+Adjust modal
+************************************************************/
+/***********************************************
+BOOTSTRAP: scss variables
+************************************************/
+/***********************************************
+JQUERY-BOOTSTRAP: Background-color and text color and Variables
+************************************************/
+/************************************************************
+COLOR
+
+background-color and text-color for
+headers modal, popover, tables, buttons, list-items etc.
+
+"$header-" is used for header to modal-windows and popover
+"$title-" is used for headers on content - table, accordion etc.
+"$control-" is used for buttons, list-items etc.
+************************************************************/
+/************************************************************
+VARIABLES
+************************************************************/
+/***********************************************
+DEFINE BOOTSTRAP BUTTON STYLE
+$btn-style-name MUST correspond with ns.bsButtonClass
+in src/jquery-bootstrap-button.js
+************************************************/
+/************************************************************
+Variables bassed on bootstrop variables
+************************************************************/
+/************************************************************
+HEADER
+Font-sizes for headers are one 'size' smaller than normal font
+$font-size-lg  : 1.25rem    20px
+$font-size-base: 1rem       16px
+$font-size-sm  : .875rem;   14px
+$font-size-xs  : .75rem     12px
+************************************************************/
+/************************************************************
+BUTTON AND MODAL
+Opacity for semi-transparent and transparent content
+************************************************************/
+/************************************************************
+SQUARE BUTTONS
+Dimentions for square buttons with only icons
+************************************************************/
+/************************************************************
+LABEL
+Font-sizes for labels are same siae as header but incl a xxs-size
+************************************************************/
+/************************************************************
+CONTENT
+Unifies padding and font-size for content of modal, accordion, popup etc.
+Using same font-size and vertical/horizontal padding as buttons
+NOTE: For sm and xs y-padding = x-padding
+************************************************************/
+/************************************************************
+MARGIN-BOTTOM
+All elements in modal-windows get same margin-bottom
+************************************************************/
+/************************************************************
+MIXIN
+************************************************************/
+/************************************************************
+RIGHT-SIDE-ICON
+Add style to <i> to place it to the right and vertical center
+NOTE: Parent element MUST have @include vertical-align-center();
+************************************************************/
+/************************************************************
+FOCUS
+All elements get same outline when they have focus:
+No outline
+border-color = light blue
+************************************************************/
+/************************************************************
+CONTENT
+Unifies padding for modal, accordion, popup etc.
+************************************************************/
+/************************************************************
+CONTROL-CONTAINER
+Style for div with controls inside modal.
+Must have tabindex:"-1" to work with focus
+************************************************************/
+/************************************************************
+CONTROL BORDER-COLOR
+All control elements get same border-color when normal, hover, active and error
+************************************************************/
+/************************************************************
+CONTROL-COLORS
+Sets all color for text, background, border for normal, :hover, :focus,  :active and .active
+************************************************************/
+/************************************************************
+TYPE-COLOR
+Bg-color and color for different 'type' (warning, alert, info, error, success)
+Used in Noty and Modal
+************************************************************/
+/************************************************************
+HEADER AND TITLE BACKGROUND-COLOR AND COLOR
+Headers for modal, popover, popup etc.
+************************************************************/
+/************************************************************
+color-hover - Background-color and text-color for 'normal' and hover
+************************************************************/
+/************************************************************
+header-colors - Colors for headers
+************************************************************/
+/************************************************************
+title-color - create colors for headers for table and accordion etc.
+************************************************************/
+/************************************************************
+HEADER, TITLE, AND FOOTER PADDING AND FONT-SIZE
+Padding are set to button y-padding (moving text to the left)
+************************************************************/
+/************************************************************
+header-variant
+************************************************************/
+/************************************************************
+title-variant - as header but with same font-size as siblings
+************************************************************/
+/************************************************************
+footer-variant
+************************************************************/
+/************************************************************
+MARGIN-BOTTOM FOR ELEMENTS IN MODAL
+All elements in modal-windows get same margin-bottom
+************************************************************/
+/***********************************************************************
+
+leaflet-bootstrap-marker-mixin.scss
+
+*************************************************************************/
+/***********************************************************************
+marker-circle-color
+Create style for bsMarkerCircle in different colors
+*************************************************************************/
+/***********************************************************************
+lbm-circle-and-icon-classes
+Create class for bsMarkerCircle named $name with color and color-border
+*************************************************************************/
+/***********************************************************************
+lbm-marker-and-icon-classes
+Create class for bsMarkerCircle named $name with color and color-border
+*************************************************************************/
+/***********************************************************************
+fa-lbm-color
+Create class for color and border-color used by L.bsMarkerAsIcon (and $.bsMarkerAsIcon)
+to create fa-icon looking like the marker
+*************************************************************************/
+/***********************************************
+	fcoo-colors-mixin.scss,
+
+	(c) 2021, FCOO
+
+	https://github.com/FCOO/fcoo-colors
+	https://github.com/FCOO
+
+
+************************************************/
+/***********************************************
+fcoo-maps-colors-variables
+
+Create all scss-variable with colors for different fcoo-maps layers
+
+************************************************/
+/****************************************************************************
+COMMON
+****************************************************************************/
+/****************************************************************************
+TIME
+Color to mark a time, button etc. as past, now or future
+****************************************************************************/
+/****************************************************************************
+SEARCH RESULT
+Color for search result
+****************************************************************************/
+/*Previous used colors:
+$DarkGoldenRod: #B8860B;
+$Chartreuse: #7FFF00;
+$osm-search-result: darken(#FF6200, 5); //dark-dark-orange
+*/
+/**********************************************************
+OBSERVATIONS
+**********************************************************/
+/**********************************************************
+NAVIGATION AND NIORD
+**********************************************************/
+/****************************************************************************
+HAVNELODS
+****************************************************************************/
+/****************************************************************************
+LOCATION
+****************************************************************************/
+/***********************************************
+leaflet-bootstrap-marker.scss
+
+lbm-type-TYPE lbm-color-COLOR [lbm-border-color-COLOR] [lbm-transparent] [lbm-puls] [lbm-hover]
+
+lbm-type-TYPE     : Sets the different type of bsMarker
+lbm-[COLOR]       : Sets inner color to [COLOR]
+lbm-border-[COLOR]: border-color = [COLOR]
+
+lbm-shadow        : Shadow in same color as inner color
+lbm-puls          : Has a pulsing ring
+lbm-transparent   : Inner color get opacity: 0.7
+lbm-hover         : When hover: get shadow and opacity: 0.9 for ibm-transparent
+************************************************/
+/***********************************************
+
+leaflet-bootstrap-marker-colors.scss
+List of avaible color-name and values
+
+************************************************/
+/***********************************************
+leaflet-bootstrap-marker-base.scss
+************************************************/
+.fa-lbm-color-blue {
+  color: #00A0DC; }
+
+.fa-lbm-border-color-blue {
+  color: #00A0DC; }
+
+.fa-lbm-color-purple {
+  color: #8C68CB; }
+
+.fa-lbm-border-color-purple {
+  color: #8C68CB; }
+
+.fa-lbm-color-red {
+  color: #EC4339; }
+
+.fa-lbm-border-color-red {
+  color: #EC4339; }
+
+.fa-lbm-color-orange {
+  color: #F47B16; }
+
+.fa-lbm-border-color-orange {
+  color: #F47B16; }
+
+.fa-lbm-color-cyan {
+  color: #00AEB3; }
+
+.fa-lbm-border-color-cyan {
+  color: #00AEB3; }
+
+.fa-lbm-color-yellow {
+  color: #EFB920; }
+
+.fa-lbm-border-color-yellow {
+  color: #EFB920; }
+
+.fa-lbm-color-pink {
+  color: #ED4795; }
+
+.fa-lbm-border-color-pink {
+  color: #ED4795; }
+
+.fa-lbm-color-green {
+  color: #7CB82F; }
+
+.fa-lbm-border-color-green {
+  color: #7CB82F; }
+
+.fa-lbm-color-gray {
+  color: #86898C; }
+
+.fa-lbm-border-color-gray {
+  color: #86898C; }
+
+.fa-lbm-color-white {
+  color: white; }
+
+.fa-lbm-border-color-white {
+  color: white; }
+
+.fa-lbm-color-black {
+  color: black; }
+
+.fa-lbm-border-color-black {
+  color: black; }
+
+.lbm-base .inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: transparent; }
+  .lbm-base .inner.text {
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+    letter-spacing: 0px;
+    font-weight: bold;
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden; }
+
+.lbm-base.lbm-text-is-black .inner {
+  color: #000; }
+
+.lbm-base.lbm-text-is-white .inner {
+  color: #fff; }
+
+.lbm-base.lbm-base.lbm-size-xs {
+  font-size: 8px; }
+  .lbm-base.lbm-base.lbm-size-xs.lbm-scale-40 {
+    font-size: 3px; }
+  .lbm-base.lbm-base.lbm-size-xs.lbm-scale-50 {
+    font-size: 4px; }
+  .lbm-base.lbm-base.lbm-size-xs.lbm-scale-60 {
+    font-size: 5px; }
+  .lbm-base.lbm-base.lbm-size-xs.lbm-scale-70 {
+    font-size: 6px; }
+  .lbm-base.lbm-base.lbm-size-xs.lbm-scale-80 {
+    font-size: 6px; }
+  .lbm-base.lbm-base.lbm-size-xs.lbm-scale-90 {
+    font-size: 7px; }
+  .lbm-base.lbm-base.lbm-size-xs.lbm-scale-120 {
+    font-size: 10px; }
+  .lbm-base.lbm-base.lbm-size-xs.lbm-scale-130 {
+    font-size: 10px; }
+  .lbm-base.lbm-base.lbm-size-xs.lbm-scale-150 {
+    font-size: 12px; }
+  .lbm-base.lbm-base.lbm-size-xs.lbm-scale-180 {
+    font-size: 14px; }
+  .lbm-base.lbm-base.lbm-size-xs.lbm-scale-200 {
+    font-size: 16px; }
+
+.lbm-base.lbm-base.lbm-size-sm {
+  font-size: 14px; }
+  .lbm-base.lbm-base.lbm-size-sm.lbm-scale-40 {
+    font-size: 6px; }
+  .lbm-base.lbm-base.lbm-size-sm.lbm-scale-50 {
+    font-size: 7px; }
+  .lbm-base.lbm-base.lbm-size-sm.lbm-scale-60 {
+    font-size: 8px; }
+  .lbm-base.lbm-base.lbm-size-sm.lbm-scale-70 {
+    font-size: 10px; }
+  .lbm-base.lbm-base.lbm-size-sm.lbm-scale-80 {
+    font-size: 11px; }
+  .lbm-base.lbm-base.lbm-size-sm.lbm-scale-90 {
+    font-size: 13px; }
+  .lbm-base.lbm-base.lbm-size-sm.lbm-scale-120 {
+    font-size: 17px; }
+  .lbm-base.lbm-base.lbm-size-sm.lbm-scale-130 {
+    font-size: 18px; }
+  .lbm-base.lbm-base.lbm-size-sm.lbm-scale-150 {
+    font-size: 21px; }
+  .lbm-base.lbm-base.lbm-size-sm.lbm-scale-180 {
+    font-size: 25px; }
+  .lbm-base.lbm-base.lbm-size-sm.lbm-scale-200 {
+    font-size: 28px; }
+
+.lbm-base.lbm-base.lbm-size-nl {
+  font-size: 24px; }
+  .lbm-base.lbm-base.lbm-size-nl.lbm-scale-40 {
+    font-size: 10px; }
+  .lbm-base.lbm-base.lbm-size-nl.lbm-scale-50 {
+    font-size: 12px; }
+  .lbm-base.lbm-base.lbm-size-nl.lbm-scale-60 {
+    font-size: 14px; }
+  .lbm-base.lbm-base.lbm-size-nl.lbm-scale-70 {
+    font-size: 17px; }
+  .lbm-base.lbm-base.lbm-size-nl.lbm-scale-80 {
+    font-size: 19px; }
+  .lbm-base.lbm-base.lbm-size-nl.lbm-scale-90 {
+    font-size: 22px; }
+  .lbm-base.lbm-base.lbm-size-nl.lbm-scale-120 {
+    font-size: 29px; }
+  .lbm-base.lbm-base.lbm-size-nl.lbm-scale-130 {
+    font-size: 31px; }
+  .lbm-base.lbm-base.lbm-size-nl.lbm-scale-150 {
+    font-size: 36px; }
+  .lbm-base.lbm-base.lbm-size-nl.lbm-scale-180 {
+    font-size: 43px; }
+  .lbm-base.lbm-base.lbm-size-nl.lbm-scale-200 {
+    font-size: 48px; }
+
+.lbm-base.lbm-base.lbm-size-lg {
+  font-size: 32px; }
+  .lbm-base.lbm-base.lbm-size-lg.lbm-scale-40 {
+    font-size: 13px; }
+  .lbm-base.lbm-base.lbm-size-lg.lbm-scale-50 {
+    font-size: 16px; }
+  .lbm-base.lbm-base.lbm-size-lg.lbm-scale-60 {
+    font-size: 19px; }
+  .lbm-base.lbm-base.lbm-size-lg.lbm-scale-70 {
+    font-size: 22px; }
+  .lbm-base.lbm-base.lbm-size-lg.lbm-scale-80 {
+    font-size: 26px; }
+  .lbm-base.lbm-base.lbm-size-lg.lbm-scale-90 {
+    font-size: 29px; }
+  .lbm-base.lbm-base.lbm-size-lg.lbm-scale-120 {
+    font-size: 38px; }
+  .lbm-base.lbm-base.lbm-size-lg.lbm-scale-130 {
+    font-size: 42px; }
+  .lbm-base.lbm-base.lbm-size-lg.lbm-scale-150 {
+    font-size: 48px; }
+  .lbm-base.lbm-base.lbm-size-lg.lbm-scale-180 {
+    font-size: 58px; }
+  .lbm-base.lbm-base.lbm-size-lg.lbm-scale-200 {
+    font-size: 64px; }
+
+.lbm-base.lbm-base.lbm-size-xl {
+  font-size: 42px; }
+  .lbm-base.lbm-base.lbm-size-xl.lbm-scale-40 {
+    font-size: 17px; }
+  .lbm-base.lbm-base.lbm-size-xl.lbm-scale-50 {
+    font-size: 21px; }
+  .lbm-base.lbm-base.lbm-size-xl.lbm-scale-60 {
+    font-size: 25px; }
+  .lbm-base.lbm-base.lbm-size-xl.lbm-scale-70 {
+    font-size: 29px; }
+  .lbm-base.lbm-base.lbm-size-xl.lbm-scale-80 {
+    font-size: 34px; }
+  .lbm-base.lbm-base.lbm-size-xl.lbm-scale-90 {
+    font-size: 38px; }
+  .lbm-base.lbm-base.lbm-size-xl.lbm-scale-120 {
+    font-size: 50px; }
+  .lbm-base.lbm-base.lbm-size-xl.lbm-scale-130 {
+    font-size: 55px; }
+  .lbm-base.lbm-base.lbm-size-xl.lbm-scale-150 {
+    font-size: 63px; }
+  .lbm-base.lbm-base.lbm-size-xl.lbm-scale-180 {
+    font-size: 76px; }
+  .lbm-base.lbm-base.lbm-size-xl.lbm-scale-200 {
+    font-size: 84px; }
+
+.lbm-base.lbm-scale-inner-40 .inner * {
+  font-size: 0.4em; }
+
+.lbm-base.lbm-scale-inner-50 .inner * {
+  font-size: 0.5em; }
+
+.lbm-base.lbm-scale-inner-60 .inner * {
+  font-size: 0.6em; }
+
+.lbm-base.lbm-scale-inner-70 .inner * {
+  font-size: 0.7em; }
+
+.lbm-base.lbm-scale-inner-80 .inner * {
+  font-size: 0.8em; }
+
+.lbm-base.lbm-scale-inner-90 .inner * {
+  font-size: 0.9em; }
+
+.lbm-base.lbm-scale-inner-120 .inner * {
+  font-size: 1.2em; }
+
+.lbm-base.lbm-scale-inner-130 .inner * {
+  font-size: 1.3em; }
+
+.lbm-base.lbm-scale-inner-150 .inner * {
+  font-size: 1.5em; }
+
+.lbm-base.lbm-scale-inner-180 .inner * {
+  font-size: 1.8em; }
+
+.lbm-base.lbm-scale-inner-200 .inner * {
+  font-size: 2em; }
+
+.leaflet-tooltip-icon-xs.leaflet-tooltip-bottom {
+  margin-top: 7px; }
+
+.leaflet-tooltip-icon-xs.leaflet-tooltip-top {
+  margin-top: -7px; }
+
+.leaflet-tooltip-icon-xs.leaflet-tooltip-left {
+  margin-left: -7px; }
+
+.leaflet-tooltip-icon-xs.leaflet-tooltip-right {
+  margin-left: 7px; }
+
+.leaflet-tooltip-icon-sm.leaflet-tooltip-bottom {
+  margin-top: 10px; }
+
+.leaflet-tooltip-icon-sm.leaflet-tooltip-top {
+  margin-top: -10px; }
+
+.leaflet-tooltip-icon-sm.leaflet-tooltip-left {
+  margin-left: -10px; }
+
+.leaflet-tooltip-icon-sm.leaflet-tooltip-right {
+  margin-left: 10px; }
+
+.leaflet-tooltip-icon-nl.leaflet-tooltip-bottom {
+  margin-top: 15px; }
+
+.leaflet-tooltip-icon-nl.leaflet-tooltip-top {
+  margin-top: -15px; }
+
+.leaflet-tooltip-icon-nl.leaflet-tooltip-left {
+  margin-left: -15px; }
+
+.leaflet-tooltip-icon-nl.leaflet-tooltip-right {
+  margin-left: 15px; }
+
+.leaflet-tooltip-icon-lg.leaflet-tooltip-bottom {
+  margin-top: 19px; }
+
+.leaflet-tooltip-icon-lg.leaflet-tooltip-top {
+  margin-top: -19px; }
+
+.leaflet-tooltip-icon-lg.leaflet-tooltip-left {
+  margin-left: -19px; }
+
+.leaflet-tooltip-icon-lg.leaflet-tooltip-right {
+  margin-left: 19px; }
+
+.leaflet-tooltip-icon-xl.leaflet-tooltip-bottom {
+  margin-top: 24px; }
+
+.leaflet-tooltip-icon-xl.leaflet-tooltip-top {
+  margin-top: -24px; }
+
+.leaflet-tooltip-icon-xl.leaflet-tooltip-left {
+  margin-left: -24px; }
+
+.leaflet-tooltip-icon-xl.leaflet-tooltip-right {
+  margin-left: 24px; }
+
+/********************************************************************************
+
+leaflet-bootstrap-marker-circle.scss
+Style for bsMarkerCircle estimated to look like Google Maps
+
+The pulsate is a djusted version of leaflet-icon-pulse by Filip Zavadil
+https://github.com/mapshakers/leaflet-icon-pulse
+
+********************************************************************************/
+@keyframes pulsate {
+  0% {
+    transform: scale(0.56, 0.56);
+    opacity: 0; }
+  50% {
+    opacity: 1; }
+  100% {
+    transform: scale(1, 1);
+    opacity: 0; } }
+
+.lbm-type-circle {
+  opacity: 1;
+  border: 2px solid black;
+  box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.5);
+  background-color: #fff;
+  color: #000;
+  border-color: #000; }
+  .lbm-type-circle.lbm-thickBorder {
+    border-width: 3px; }
+  .lbm-type-circle.lbm-thinBorder {
+    border-width: 1px; }
+  .lbm-type-circle.lbm-noBorder {
+    border: none; }
+  .lbm-type-circle.lbm-round {
+    border-radius: 100%; }
+    .lbm-type-circle.lbm-round:before {
+      border-radius: 100%; }
+  .lbm-type-circle.lbm-transparent {
+    background-color: rgba(255, 255, 255, 0.7); }
+    .lbm-type-circle.lbm-transparent.lbm-hover:hover {
+      background-color: rgba(255, 255, 255, 0.9); }
+  .lbm-type-circle.lbm-shadow, .lbm-type-circle.leaflet-drag-target, .lbm-type-circle.lbm-hover:hover {
+    box-shadow: 0px 0px 0px 5px rgba(255, 255, 255, 0.28); }
+  .lbm-type-circle:before {
+    box-shadow: 0 0 6px 2px #fff; }
+  .lbm-type-circle:before {
+    display: none;
+    position: absolute;
+    content: "";
+    height: calc(100% + 0.8em);
+    width: calc(100% + 0.8em);
+    margin: -0.4em 0 0 -0.4em; }
+  .lbm-type-circle.lbm-puls:before {
+    display: block;
+    animation: pulsate 1s ease-out;
+    animation-iteration-count: infinite; }
+  .lbm-type-circle .inner {
+    font-size: calc(.7em - 4px); }
+
+.lbm-type-circle.lbm-color-blue {
+  background-color: #00A0DC;
+  color: #000; }
+  .lbm-type-circle.lbm-color-blue.lbm-transparent {
+    background-color: rgba(0, 160, 220, 0.7); }
+    .lbm-type-circle.lbm-color-blue.lbm-transparent.lbm-hover:hover {
+      background-color: rgba(0, 160, 220, 0.9); }
+  .lbm-type-circle.lbm-color-blue.lbm-shadow, .lbm-type-circle.lbm-color-blue.leaflet-drag-target, .lbm-type-circle.lbm-color-blue.lbm-hover:hover {
+    box-shadow: 0px 0px 0px 5px rgba(0, 160, 220, 0.28); }
+  .lbm-type-circle.lbm-color-blue:before {
+    box-shadow: 0 0 6px 2px #00A0DC; }
+
+.lbm-type-circle.lbm-border-color-blue {
+  border-color: #00A0DC; }
+
+.lbm-type-circle.lbm-color-purple {
+  background-color: #8C68CB;
+  color: #000; }
+  .lbm-type-circle.lbm-color-purple.lbm-transparent {
+    background-color: rgba(140, 104, 203, 0.7); }
+    .lbm-type-circle.lbm-color-purple.lbm-transparent.lbm-hover:hover {
+      background-color: rgba(140, 104, 203, 0.9); }
+  .lbm-type-circle.lbm-color-purple.lbm-shadow, .lbm-type-circle.lbm-color-purple.leaflet-drag-target, .lbm-type-circle.lbm-color-purple.lbm-hover:hover {
+    box-shadow: 0px 0px 0px 5px rgba(140, 104, 203, 0.28); }
+  .lbm-type-circle.lbm-color-purple:before {
+    box-shadow: 0 0 6px 2px #8C68CB; }
+
+.lbm-type-circle.lbm-border-color-purple {
+  border-color: #8C68CB; }
+
+.lbm-type-circle.lbm-color-red {
+  background-color: #EC4339;
+  color: #000; }
+  .lbm-type-circle.lbm-color-red.lbm-transparent {
+    background-color: rgba(236, 67, 57, 0.7); }
+    .lbm-type-circle.lbm-color-red.lbm-transparent.lbm-hover:hover {
+      background-color: rgba(236, 67, 57, 0.9); }
+  .lbm-type-circle.lbm-color-red.lbm-shadow, .lbm-type-circle.lbm-color-red.leaflet-drag-target, .lbm-type-circle.lbm-color-red.lbm-hover:hover {
+    box-shadow: 0px 0px 0px 5px rgba(236, 67, 57, 0.28); }
+  .lbm-type-circle.lbm-color-red:before {
+    box-shadow: 0 0 6px 2px #EC4339; }
+
+.lbm-type-circle.lbm-border-color-red {
+  border-color: #EC4339; }
+
+.lbm-type-circle.lbm-color-orange {
+  background-color: #F47B16;
+  color: #000; }
+  .lbm-type-circle.lbm-color-orange.lbm-transparent {
+    background-color: rgba(244, 123, 22, 0.7); }
+    .lbm-type-circle.lbm-color-orange.lbm-transparent.lbm-hover:hover {
+      background-color: rgba(244, 123, 22, 0.9); }
+  .lbm-type-circle.lbm-color-orange.lbm-shadow, .lbm-type-circle.lbm-color-orange.leaflet-drag-target, .lbm-type-circle.lbm-color-orange.lbm-hover:hover {
+    box-shadow: 0px 0px 0px 5px rgba(244, 123, 22, 0.28); }
+  .lbm-type-circle.lbm-color-orange:before {
+    box-shadow: 0 0 6px 2px #F47B16; }
+
+.lbm-type-circle.lbm-border-color-orange {
+  border-color: #F47B16; }
+
+.lbm-type-circle.lbm-color-cyan {
+  background-color: #00AEB3;
+  color: #000; }
+  .lbm-type-circle.lbm-color-cyan.lbm-transparent {
+    background-color: rgba(0, 174, 179, 0.7); }
+    .lbm-type-circle.lbm-color-cyan.lbm-transparent.lbm-hover:hover {
+      background-color: rgba(0, 174, 179, 0.9); }
+  .lbm-type-circle.lbm-color-cyan.lbm-shadow, .lbm-type-circle.lbm-color-cyan.leaflet-drag-target, .lbm-type-circle.lbm-color-cyan.lbm-hover:hover {
+    box-shadow: 0px 0px 0px 5px rgba(0, 174, 179, 0.28); }
+  .lbm-type-circle.lbm-color-cyan:before {
+    box-shadow: 0 0 6px 2px #00AEB3; }
+
+.lbm-type-circle.lbm-border-color-cyan {
+  border-color: #00AEB3; }
+
+.lbm-type-circle.lbm-color-yellow {
+  background-color: #EFB920;
+  color: #000; }
+  .lbm-type-circle.lbm-color-yellow.lbm-transparent {
+    background-color: rgba(239, 185, 32, 0.7); }
+    .lbm-type-circle.lbm-color-yellow.lbm-transparent.lbm-hover:hover {
+      background-color: rgba(239, 185, 32, 0.9); }
+  .lbm-type-circle.lbm-color-yellow.lbm-shadow, .lbm-type-circle.lbm-color-yellow.leaflet-drag-target, .lbm-type-circle.lbm-color-yellow.lbm-hover:hover {
+    box-shadow: 0px 0px 0px 5px rgba(239, 185, 32, 0.28); }
+  .lbm-type-circle.lbm-color-yellow:before {
+    box-shadow: 0 0 6px 2px #EFB920; }
+
+.lbm-type-circle.lbm-border-color-yellow {
+  border-color: #EFB920; }
+
+.lbm-type-circle.lbm-color-pink {
+  background-color: #ED4795;
+  color: #000; }
+  .lbm-type-circle.lbm-color-pink.lbm-transparent {
+    background-color: rgba(237, 71, 149, 0.7); }
+    .lbm-type-circle.lbm-color-pink.lbm-transparent.lbm-hover:hover {
+      background-color: rgba(237, 71, 149, 0.9); }
+  .lbm-type-circle.lbm-color-pink.lbm-shadow, .lbm-type-circle.lbm-color-pink.leaflet-drag-target, .lbm-type-circle.lbm-color-pink.lbm-hover:hover {
+    box-shadow: 0px 0px 0px 5px rgba(237, 71, 149, 0.28); }
+  .lbm-type-circle.lbm-color-pink:before {
+    box-shadow: 0 0 6px 2px #ED4795; }
+
+.lbm-type-circle.lbm-border-color-pink {
+  border-color: #ED4795; }
+
+.lbm-type-circle.lbm-color-green {
+  background-color: #7CB82F;
+  color: #000; }
+  .lbm-type-circle.lbm-color-green.lbm-transparent {
+    background-color: rgba(124, 184, 47, 0.7); }
+    .lbm-type-circle.lbm-color-green.lbm-transparent.lbm-hover:hover {
+      background-color: rgba(124, 184, 47, 0.9); }
+  .lbm-type-circle.lbm-color-green.lbm-shadow, .lbm-type-circle.lbm-color-green.leaflet-drag-target, .lbm-type-circle.lbm-color-green.lbm-hover:hover {
+    box-shadow: 0px 0px 0px 5px rgba(124, 184, 47, 0.28); }
+  .lbm-type-circle.lbm-color-green:before {
+    box-shadow: 0 0 6px 2px #7CB82F; }
+
+.lbm-type-circle.lbm-border-color-green {
+  border-color: #7CB82F; }
+
+.lbm-type-circle.lbm-color-gray {
+  background-color: #86898C;
+  color: #000; }
+  .lbm-type-circle.lbm-color-gray.lbm-transparent {
+    background-color: rgba(134, 137, 140, 0.7); }
+    .lbm-type-circle.lbm-color-gray.lbm-transparent.lbm-hover:hover {
+      background-color: rgba(134, 137, 140, 0.9); }
+  .lbm-type-circle.lbm-color-gray.lbm-shadow, .lbm-type-circle.lbm-color-gray.leaflet-drag-target, .lbm-type-circle.lbm-color-gray.lbm-hover:hover {
+    box-shadow: 0px 0px 0px 5px rgba(134, 137, 140, 0.28); }
+  .lbm-type-circle.lbm-color-gray:before {
+    box-shadow: 0 0 6px 2px #86898C; }
+
+.lbm-type-circle.lbm-border-color-gray {
+  border-color: #86898C; }
+
+.lbm-type-circle.lbm-color-white {
+  background-color: white;
+  color: #000; }
+  .lbm-type-circle.lbm-color-white.lbm-transparent {
+    background-color: rgba(255, 255, 255, 0.7); }
+    .lbm-type-circle.lbm-color-white.lbm-transparent.lbm-hover:hover {
+      background-color: rgba(255, 255, 255, 0.9); }
+  .lbm-type-circle.lbm-color-white.lbm-shadow, .lbm-type-circle.lbm-color-white.leaflet-drag-target, .lbm-type-circle.lbm-color-white.lbm-hover:hover {
+    box-shadow: 0px 0px 0px 5px rgba(255, 255, 255, 0.28); }
+  .lbm-type-circle.lbm-color-white:before {
+    box-shadow: 0 0 6px 2px white; }
+
+.lbm-type-circle.lbm-border-color-white {
+  border-color: white; }
+
+.lbm-type-circle.lbm-color-black {
+  background-color: black;
+  color: #fff; }
+  .lbm-type-circle.lbm-color-black.lbm-transparent {
+    background-color: rgba(0, 0, 0, 0.7); }
+    .lbm-type-circle.lbm-color-black.lbm-transparent.lbm-hover:hover {
+      background-color: rgba(0, 0, 0, 0.9); }
+  .lbm-type-circle.lbm-color-black.lbm-shadow, .lbm-type-circle.lbm-color-black.leaflet-drag-target, .lbm-type-circle.lbm-color-black.lbm-hover:hover {
+    box-shadow: 0px 0px 0px 5px rgba(0, 0, 0, 0.28); }
+  .lbm-type-circle.lbm-color-black:before {
+    box-shadow: 0 0 6px 2px black; }
+
+.lbm-type-circle.lbm-border-color-black {
+  border-color: black; }
+
+/***********************************************
+
+_leaflet-bootstrap-marker-icon.scss,
+
+************************************************/
+@keyframes icon-pulsate {
+  0% {
+    transform: scale(1, 1);
+    opacity: 0; }
+  50% {
+    opacity: .5; }
+  100% {
+    transform: scale(1.8, 1.8);
+    opacity: 0; } }
+
+.lbm-type-icon .lbm-content-outer {
+  width: 100%;
+  height: 100%; }
+
+.lbm-type-icon .lbm-content-svg {
+  position: relative; }
+
+.lbm-type-icon .lbm-content {
+  display: block;
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center; }
+  .lbm-type-icon .lbm-content.lbm-content-puls {
+    font-size: 1em;
+    top: 0;
+    visibility: hidden; }
+  .lbm-type-icon .lbm-content.lbm-content-shadow {
+    font-size: 1em;
+    top: -1em;
+    -webkit-text-stroke-color: rgba(255, 255, 255, 0.5);
+    -moz-text-stroke-color: rgba(255, 255, 255, 0.5);
+    -webkit-text-stroke-width: 2px;
+    -moz-text-stroke-width: 2px; }
+  .lbm-type-icon .lbm-content.lbm-content-background {
+    font-size: 1em;
+    top: -2em; }
+  .lbm-type-icon .lbm-content.lbm-content-border {
+    font-size: 1em;
+    top: -3em; }
+
+.lbm-type-icon .inner, .lbm-type-icon .inner2 {
+  position: relative;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  line-height: 2;
+  font-size: 0.5em; }
+
+.lbm-type-icon .inner {
+  top: calc(-4em / 0.5); }
+
+.lbm-type-icon .inner2 + .inner {
+  top: calc(-5em / 0.5); }
+
+.lbm-type-icon .inner2 {
+  top: calc(-4em / 0.5); }
+
+.lbm-type-icon.lbm-transparent .lbm-content-background {
+  opacity: 0.7; }
+
+.lbm-type-icon.lbm-transparent.lbm-hover:hover .lbm-content-background {
+  opacity: 0.9; }
+
+.lbm-type-icon.lbm-puls .lbm-content-puls {
+  visibility: visible;
+  animation: icon-pulsate 1s ease-out;
+  animation-iteration-count: infinite; }
+
+.lbm-type-icon.lbm-shadow .lbm-content-shadow, .lbm-type-icon.leaflet-drag-target .lbm-content-shadow, .lbm-type-icon.lbm-hover:hover .lbm-content-shadow {
+  -webkit-text-stroke-color: rgba(255, 255, 255, 0.5);
+  -moz-text-stroke-color: rgba(255, 255, 255, 0.5);
+  -webkit-text-stroke-width: 10px;
+  -moz-text-stroke-width: 10px; }
+
+.lbm-type-icon.lbm-no-fill .lbm-content-border {
+  top: -2em; }
+
+.lbm-type-icon.lbm-scale-y-40 .lbm-content {
+  line-height: 0.4; }
+  .lbm-type-icon.lbm-scale-y-40 .lbm-content.lbm-content-puls {
+    top: 0; }
+  .lbm-type-icon.lbm-scale-y-40 .lbm-content.lbm-content-shadow {
+    top: -0.4em; }
+  .lbm-type-icon.lbm-scale-y-40 .lbm-content.lbm-content-background {
+    top: -0.8em; }
+  .lbm-type-icon.lbm-scale-y-40 .lbm-content.lbm-content-border {
+    top: -1.2em; }
+
+.lbm-type-icon.lbm-scale-y-50 .lbm-content {
+  line-height: 0.5; }
+  .lbm-type-icon.lbm-scale-y-50 .lbm-content.lbm-content-puls {
+    top: 0; }
+  .lbm-type-icon.lbm-scale-y-50 .lbm-content.lbm-content-shadow {
+    top: -0.5em; }
+  .lbm-type-icon.lbm-scale-y-50 .lbm-content.lbm-content-background {
+    top: -1em; }
+  .lbm-type-icon.lbm-scale-y-50 .lbm-content.lbm-content-border {
+    top: -1.5em; }
+
+.lbm-type-icon.lbm-scale-y-60 .lbm-content {
+  line-height: 0.6; }
+  .lbm-type-icon.lbm-scale-y-60 .lbm-content.lbm-content-puls {
+    top: 0; }
+  .lbm-type-icon.lbm-scale-y-60 .lbm-content.lbm-content-shadow {
+    top: -0.6em; }
+  .lbm-type-icon.lbm-scale-y-60 .lbm-content.lbm-content-background {
+    top: -1.2em; }
+  .lbm-type-icon.lbm-scale-y-60 .lbm-content.lbm-content-border {
+    top: -1.8em; }
+
+.lbm-type-icon.lbm-scale-y-70 .lbm-content {
+  line-height: 0.7; }
+  .lbm-type-icon.lbm-scale-y-70 .lbm-content.lbm-content-puls {
+    top: 0; }
+  .lbm-type-icon.lbm-scale-y-70 .lbm-content.lbm-content-shadow {
+    top: -0.7em; }
+  .lbm-type-icon.lbm-scale-y-70 .lbm-content.lbm-content-background {
+    top: -1.4em; }
+  .lbm-type-icon.lbm-scale-y-70 .lbm-content.lbm-content-border {
+    top: -2.1em; }
+
+.lbm-type-icon.lbm-scale-y-80 .lbm-content {
+  line-height: 0.8; }
+  .lbm-type-icon.lbm-scale-y-80 .lbm-content.lbm-content-puls {
+    top: 0; }
+  .lbm-type-icon.lbm-scale-y-80 .lbm-content.lbm-content-shadow {
+    top: -0.8em; }
+  .lbm-type-icon.lbm-scale-y-80 .lbm-content.lbm-content-background {
+    top: -1.6em; }
+  .lbm-type-icon.lbm-scale-y-80 .lbm-content.lbm-content-border {
+    top: -2.4em; }
+
+.lbm-type-icon.lbm-scale-y-90 .lbm-content {
+  line-height: 0.9; }
+  .lbm-type-icon.lbm-scale-y-90 .lbm-content.lbm-content-puls {
+    top: 0; }
+  .lbm-type-icon.lbm-scale-y-90 .lbm-content.lbm-content-shadow {
+    top: -0.9em; }
+  .lbm-type-icon.lbm-scale-y-90 .lbm-content.lbm-content-background {
+    top: -1.8em; }
+  .lbm-type-icon.lbm-scale-y-90 .lbm-content.lbm-content-border {
+    top: -2.7em; }
+
+.lbm-type-icon.lbm-scale-y-120 .lbm-content {
+  line-height: 1.2; }
+  .lbm-type-icon.lbm-scale-y-120 .lbm-content.lbm-content-puls {
+    top: 0; }
+  .lbm-type-icon.lbm-scale-y-120 .lbm-content.lbm-content-shadow {
+    top: -1.2em; }
+  .lbm-type-icon.lbm-scale-y-120 .lbm-content.lbm-content-background {
+    top: -2.4em; }
+  .lbm-type-icon.lbm-scale-y-120 .lbm-content.lbm-content-border {
+    top: -3.6em; }
+
+.lbm-type-icon.lbm-scale-y-130 .lbm-content {
+  line-height: 1.3; }
+  .lbm-type-icon.lbm-scale-y-130 .lbm-content.lbm-content-puls {
+    top: 0; }
+  .lbm-type-icon.lbm-scale-y-130 .lbm-content.lbm-content-shadow {
+    top: -1.3em; }
+  .lbm-type-icon.lbm-scale-y-130 .lbm-content.lbm-content-background {
+    top: -2.6em; }
+  .lbm-type-icon.lbm-scale-y-130 .lbm-content.lbm-content-border {
+    top: -3.9em; }
+
+.lbm-type-icon.lbm-scale-y-150 .lbm-content {
+  line-height: 1.5; }
+  .lbm-type-icon.lbm-scale-y-150 .lbm-content.lbm-content-puls {
+    top: 0; }
+  .lbm-type-icon.lbm-scale-y-150 .lbm-content.lbm-content-shadow {
+    top: -1.5em; }
+  .lbm-type-icon.lbm-scale-y-150 .lbm-content.lbm-content-background {
+    top: -3em; }
+  .lbm-type-icon.lbm-scale-y-150 .lbm-content.lbm-content-border {
+    top: -4.5em; }
+
+.lbm-type-icon.lbm-scale-y-180 .lbm-content {
+  line-height: 1.8; }
+  .lbm-type-icon.lbm-scale-y-180 .lbm-content.lbm-content-puls {
+    top: 0; }
+  .lbm-type-icon.lbm-scale-y-180 .lbm-content.lbm-content-shadow {
+    top: -1.8em; }
+  .lbm-type-icon.lbm-scale-y-180 .lbm-content.lbm-content-background {
+    top: -3.6em; }
+  .lbm-type-icon.lbm-scale-y-180 .lbm-content.lbm-content-border {
+    top: -5.4em; }
+
+.lbm-type-icon.lbm-scale-y-200 .lbm-content {
+  line-height: 2; }
+  .lbm-type-icon.lbm-scale-y-200 .lbm-content.lbm-content-puls {
+    top: 0; }
+  .lbm-type-icon.lbm-scale-y-200 .lbm-content.lbm-content-shadow {
+    top: -2em; }
+  .lbm-type-icon.lbm-scale-y-200 .lbm-content.lbm-content-background {
+    top: -4em; }
+  .lbm-type-icon.lbm-scale-y-200 .lbm-content.lbm-content-border {
+    top: -6em; }
+
+.lbm-type-icon.lbm-color-blue.lbm-shadow .lbm-content-shadow, .lbm-type-icon.lbm-color-blue.leaflet-drag-target .lbm-content-shadow, .lbm-type-icon.lbm-color-blue.lbm-hover:hover .lbm-content-shadow {
+  -webkit-text-stroke-color: rgba(0, 160, 220, 0.28);
+  -moz-text-stroke-color: rgba(0, 160, 220, 0.28); }
+
+.lbm-type-icon.lbm-color-purple.lbm-shadow .lbm-content-shadow, .lbm-type-icon.lbm-color-purple.leaflet-drag-target .lbm-content-shadow, .lbm-type-icon.lbm-color-purple.lbm-hover:hover .lbm-content-shadow {
+  -webkit-text-stroke-color: rgba(140, 104, 203, 0.28);
+  -moz-text-stroke-color: rgba(140, 104, 203, 0.28); }
+
+.lbm-type-icon.lbm-color-red.lbm-shadow .lbm-content-shadow, .lbm-type-icon.lbm-color-red.leaflet-drag-target .lbm-content-shadow, .lbm-type-icon.lbm-color-red.lbm-hover:hover .lbm-content-shadow {
+  -webkit-text-stroke-color: rgba(236, 67, 57, 0.28);
+  -moz-text-stroke-color: rgba(236, 67, 57, 0.28); }
+
+.lbm-type-icon.lbm-color-orange.lbm-shadow .lbm-content-shadow, .lbm-type-icon.lbm-color-orange.leaflet-drag-target .lbm-content-shadow, .lbm-type-icon.lbm-color-orange.lbm-hover:hover .lbm-content-shadow {
+  -webkit-text-stroke-color: rgba(244, 123, 22, 0.28);
+  -moz-text-stroke-color: rgba(244, 123, 22, 0.28); }
+
+.lbm-type-icon.lbm-color-cyan.lbm-shadow .lbm-content-shadow, .lbm-type-icon.lbm-color-cyan.leaflet-drag-target .lbm-content-shadow, .lbm-type-icon.lbm-color-cyan.lbm-hover:hover .lbm-content-shadow {
+  -webkit-text-stroke-color: rgba(0, 174, 179, 0.28);
+  -moz-text-stroke-color: rgba(0, 174, 179, 0.28); }
+
+.lbm-type-icon.lbm-color-yellow.lbm-shadow .lbm-content-shadow, .lbm-type-icon.lbm-color-yellow.leaflet-drag-target .lbm-content-shadow, .lbm-type-icon.lbm-color-yellow.lbm-hover:hover .lbm-content-shadow {
+  -webkit-text-stroke-color: rgba(239, 185, 32, 0.28);
+  -moz-text-stroke-color: rgba(239, 185, 32, 0.28); }
+
+.lbm-type-icon.lbm-color-pink.lbm-shadow .lbm-content-shadow, .lbm-type-icon.lbm-color-pink.leaflet-drag-target .lbm-content-shadow, .lbm-type-icon.lbm-color-pink.lbm-hover:hover .lbm-content-shadow {
+  -webkit-text-stroke-color: rgba(237, 71, 149, 0.28);
+  -moz-text-stroke-color: rgba(237, 71, 149, 0.28); }
+
+.lbm-type-icon.lbm-color-green.lbm-shadow .lbm-content-shadow, .lbm-type-icon.lbm-color-green.leaflet-drag-target .lbm-content-shadow, .lbm-type-icon.lbm-color-green.lbm-hover:hover .lbm-content-shadow {
+  -webkit-text-stroke-color: rgba(124, 184, 47, 0.28);
+  -moz-text-stroke-color: rgba(124, 184, 47, 0.28); }
+
+.lbm-type-icon.lbm-color-gray.lbm-shadow .lbm-content-shadow, .lbm-type-icon.lbm-color-gray.leaflet-drag-target .lbm-content-shadow, .lbm-type-icon.lbm-color-gray.lbm-hover:hover .lbm-content-shadow {
+  -webkit-text-stroke-color: rgba(134, 137, 140, 0.28);
+  -moz-text-stroke-color: rgba(134, 137, 140, 0.28); }
+
+.lbm-type-icon.lbm-color-white.lbm-shadow .lbm-content-shadow, .lbm-type-icon.lbm-color-white.leaflet-drag-target .lbm-content-shadow, .lbm-type-icon.lbm-color-white.lbm-hover:hover .lbm-content-shadow {
+  -webkit-text-stroke-color: rgba(255, 255, 255, 0.28);
+  -moz-text-stroke-color: rgba(255, 255, 255, 0.28); }
+
+.lbm-type-icon.lbm-color-black.lbm-shadow .lbm-content-shadow, .lbm-type-icon.lbm-color-black.leaflet-drag-target .lbm-content-shadow, .lbm-type-icon.lbm-color-black.lbm-hover:hover .lbm-content-shadow {
+  -webkit-text-stroke-color: rgba(0, 0, 0, 0.28);
+  -moz-text-stroke-color: rgba(0, 0, 0, 0.28); }
+
+/***********************************************
+
+_leaflet-bootstrap-marker-standard.scss,
+
+Adjust font-size and top for .inner to fit inside a fa-map-marker icon
+************************************************/
+.lbm-type-icon-standard .lbm-content-outer .inner {
+  font-size: calc(.5em / 1.2);
+  top: calc(-4.1em / 0.5 * 1.2); }
+
+/***********************************************
+
+_leaflet-bootstrap-marker-SVG.scss
+
+************************************************/
+.leaflet-marker-icon svg {
+  vertical-align: top; }
+
+.leaflet-marker-svg-container {
+  width: 100%;
+  height: 100%;
+  margin-top: -100%; }

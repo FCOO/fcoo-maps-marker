@@ -1,0 +1,44 @@
+/***********************************************
+    fcoo-maps-marker.scss,
+
+    (c) 2021, FCOO
+
+    https://github.com/FCOO/fcoo-maps-marker
+    https://github.com/FCOO
+
+
+************************************************/
+//BOURBON - http://bourbon.io/
+//HER@import "../bower_components/bourbon/core/bourbon";
+
+//MODERNIZR-MIXIN - https://github.com/danielguillan/modernizr-mixin
+//HER@import "../bower_components/modernizr-mixin/stylesheets/modernizr";
+
+//MATHSASS - https://github.com/terkel/mathsass
+//HER@import "../bower_components/mathsass/dist/math";
+
+
+//BOOTSTRAP
+@import "../bower_components/jquery-bootstrap/src/include-jquery-bootstrap-variables";
+
+//LEAFLET-BOOTSTRAP-MARKER-MIXIN
+@import "../bower_components/leaflet-bootstrap-marker-mixin/dist/leaflet-bootstrap-marker-mixin";
+
+//FCOO-COLORS
+@import "../bower_components/fcoo-colors/src/fcoo-colors-mixin";
+
+//FCOO-MAPS-COLORS
+@import "../bower_components/fcoo-maps-colors/src/fcoo-maps-colors-variables";
+
+//Set list of avaiable colors from fcoo-maps-colors
+$lbm-color-list : $fc-color-name-list;
+
+//MANGLER    "standard"  : #4285F4 //= rgba(66, 133, 244) = google maps color for location icon
+
+//Create scss for jquery-bootstrap-marker
+@import "../bower_components/leaflet-bootstrap-marker/src/leaflet-bootstrap-marker-include";
+
+
+
+//adjust fa-star and other with  transform: translateX(-43px) translateY(5px); - MANGLER
+

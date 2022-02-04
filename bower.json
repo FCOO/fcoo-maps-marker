@@ -1,0 +1,42 @@
+{
+  "name": "fcoo-maps-marker",
+  "version": "0.1.0",
+  "homepage": "https://github.com/FCOO/fcoo-maps-marker",
+  "authors": [
+    "Niels Holt"
+  ],
+  "description": "",
+  "main": [
+    "dist/fcoo-maps-marker.js",
+    "dist/fcoo-maps-marker.css"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/FCOO/fcoo-maps-marker.git"
+  },
+  "dependencies": {
+    "fcoo-maps": "fcoo/fcoo-maps#latest",
+    "leaflet-bootstrap-marker": "fcoo/leaflet-bootstrap-marker#latest"
+  },
+  "overrides": {
+    "leaflet-bootstrap-marker": {
+      "main": "dist/leaflet-bootstrap-marker.js"
+    }
+  },
+  "devDependencies": {
+    "bourbon": "latest",
+    "modernizr-mixin": "latest",
+    "mathsass": "latest"
+  },
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "moduleType": [
+    "es6"
+  ]
+}
