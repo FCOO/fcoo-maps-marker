@@ -148,9 +148,12 @@
         createLayer: function(/*options*/){
             var markerOptions = this.options.markerOptions,
                 marker = new this.options.constructor( markerOptions.latLng, markerOptions );
+
             marker.bindPopup( this.popupOptions() );
 
             marker.on('drag', this._drag, this);
+            marker.on('dragstart', this._dragstart, this);
+            marker.on('dragend', this._dragend, this);
 
             return marker;
         },
@@ -228,6 +231,22 @@
         _drag: function(e){
             this.setLatLng(e.latlng);
         },
+
+        //_dragstart: Set all popup.options.autoPan = false to allow popup to drag along
+        _dragstart: function(/*e*/){
+            $.each(this.info, function(id, info){
+                info.layer._popup.options._save_autoPan = info.layer._popup.options.autoPan;
+                info.layer._popup.options.autoPan = false;
+            });
+        },
+
+        //_dragend: Reset popup.options.autoPan
+        _dragend: function(/*e*/){
+            $.each(this.info, function(id, info){
+                info.layer._popup.options.autoPan = info.layer._popup.options._save_autoPan;
+            });
+        },
+
 
         /*****************************************************
         setLatLng(latLng)
