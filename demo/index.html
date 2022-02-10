@@ -48,6 +48,13 @@ draggable: true,
                     });
 
             addMenu( mapLayer.menuItemOptions() );
+
+
+setTimeout( function(){
+    mapLayer.updateMarker({speed: 200});
+}, 5000);
+
+
         };
 
 

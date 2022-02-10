@@ -225,6 +225,8 @@
         *****************************************************/
         updateMarker: function(options = {}, forceColor){
             this.options.markerOptions = $.extend(true, this.options.markerOptions, options);
+
+
             return this._visitAllMaps('updateIcon', [this.options.markerOptions, forceColor]);
         },
 
@@ -253,7 +255,8 @@
         *****************************************************/
         setLatLng: function(latLng){
             this.options.markerOptions.latLng = latLng;
-            this._visitAllMaps('setLatLng', arguments, 'latlng');
+//            this._visitAllMaps('setLatLng', arguments, 'latlng');//Virker
+            this.updateMarker({colorName: 'red'}); //Virker ikke
         },
 
 
