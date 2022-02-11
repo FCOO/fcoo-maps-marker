@@ -31,14 +31,20 @@
                         text:'Test', 
                         markerOptions: {
                             latLng: L.latLng(55, 12),
-                            accuracy        : 60,
+                            //accuracy        : 60,
+                            //accuracy        : null,
                             speed           : 20,
                             direction       : 123,
                             altitude        : null,//32,
                             altitudeAccuracy: 2,
 draggable: true,
 
-                            popupContent: ['latLng', 'accuracy', 'altitude', 'altitudeAccuracy', 'velocity'],
+                            popupContent        : ['latLng', 'velocity'],
+                            popupExtendedContent: ['latLng', 'accuracy', 'altitude', 'altitudeAccuracy', 'velocity'],
+                            legendContent       : ['latLng', 'accuracy', 'altitude', 'altitudeAccuracy', 'velocity'],
+
+
+                            inclCenterButton: true,
 
                             innerIconClass: 'fa-home',
                             puls: true,
@@ -49,11 +55,14 @@ draggable: true,
 
             addMenu( mapLayer.menuItemOptions() );
 
-
+/*
 setTimeout( function(){
     mapLayer.updateMarker({speed: 200});
 }, 5000);
-
+setTimeout( function(){
+    mapLayer.updateMarker({accuracy: 12});
+}, 5000);
+*/
 
         };
 

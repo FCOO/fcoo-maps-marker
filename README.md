@@ -3,7 +3,9 @@
 
 
 ## Description
-This package is used for...
+This package is used for adding Marker to a fcoo-maps.
+
+See files in `src` for description and documentation
 
 ## Installation
 ### bower
@@ -11,6 +13,8 @@ This package is used for...
 
 ## Demo
 http://FCOO.github.io/fcoo-maps-marker/demo/
+
+<!-- 
 
 ## Usage
 
@@ -26,7 +30,7 @@ http://FCOO.github.io/fcoo-maps-marker/demo/
     );
 
 
-<!-- ### options
+### options
 | Id | Type | Default | Description |
 | :--: | :--: | :-----: | --- |
 | options1 | boolean | true | If <code>true</code> the ... |

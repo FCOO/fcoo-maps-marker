@@ -36,11 +36,19 @@
 
 
 
-
-
+        popupContent        : 'latLng', //popupContent = []ID or STRING of IDs = The values to include in popup
         popupWidth          : 120,
         hasExtendedPopup    : true,
+
+        popupExtendedContent: false, //false, true (same as popupContent) or []ID or STRING of IDs = The values to include in legend. Default = popupContent
         extendedPopupWidth  : 200,
+
+
+        //legendContent:  = []ID or STRING of IDs = The values to include in legend. Default = popupContent
+
+        buttonList      : [],
+        inclCenterButton: true, //Adds a 'Center' button in popup and legend
+
 
         latLng          : null,
         accuracy        : null,
@@ -54,13 +62,6 @@
         velocity        : 'not null', //Dummy value to allow popup content to check if speed and direction exists
 
 
-        //popupContent = []ID or STRING of IDs = The values to include in popup
-        popupContent: 'latLng',
-
-        //legendContent:  = []ID or STRING of IDs = The values to include in legend. Default = popupContent
-
-        buttonList  : [],
-        centerButtonInlegend: true, //Adds a 'Center' button in legend
 
     };
 
@@ -80,19 +81,42 @@
         //Adjust options
         options.markerOptions = $.extend(true, {}, this.defaultMarkerOptions, options.markerOptions);
 
+        options.buttonList = options.markerOptions.buttonList || [];
+
+        if (options.markerOptions.inclCenterButton)
+            options.buttonList.push({
+                icon   : 'fa-crosshairs',
+                text   : {da:'Centrér', en:'Center'},
+                context: this,
+                onClick: this._button_onClick_setCenter
+            });
+
+
         function adjust( content ){
-            var asString = $.isArray(content) ? content.join(' ') : content;
-            return asString/*.toUpperCase()*/.split(' ');
+            var asString = $.isArray(content) ? content.join(' ') : (content || '');
+            return asString.split(' ');
         }
 
         //popupContent = ids for content in popups
         options.popupContentIdList = adjust( options.markerOptions.popupContent );
         options.popupContentIdAsStr = options.popupContentIdList.join(' ');
 
+        if (options.markerOptions.popupExtendedContent){
+            if (options.markerOptions.popupExtendedContent === true){
+                options.popupExtendedContentIdList = options.popupContentIdList;
+                options.popupExtendedContentIdAsStr = options.popupContentIdAsStr;
+            }
+            else {
+                options.popupExtendedContentIdList = adjust( options.markerOptions.popupExtendedContent );
+                options.popupExtendedContentIdAsStr = options.popupExtendedContentIdList.join(' ');
+            }
+        }
+
         //legendContent = ids for content in legend. Default = popupContent
         options.markerOptions.legendContent = options.markerOptions.hasOwnProperty('legendContent') ? options.markerOptions.legendContent || '' : options.markerOptions.popupContent;
         options.legendContentIdList = adjust( options.markerOptions.legendContent );
         options.legendContentIdAsStr = options.legendContentIdList.join(' ');
+
 
         options.markerOptions = L.BsMarkerBase.prototype._adjustOptions( options.markerOptions );
 
@@ -104,26 +128,16 @@
 
         /* DEVELOPMENT
         var _this = this;
-        options.markerOptions.buttonList = [
+        options.buttonList = [
             {text:'dir + 10', onClick: function(){ _this.setDeltaDirection(10); } },
             {text:'Set size sm', onClick: function(){ _this.setSize('sm'); } },
             {text:'Set size nl', onClick: function(){ _this.setSize('nl'); } },
             {text:'Set size lg', onClick: function(){ _this.setSize('lg'); } },
         ];
-        */
-
-        options.buttonList = options.markerOptions.buttonList || [];
-
-        if (options.markerOptions.centerButtonInlegend)
-            options.buttonList.push({
-                icon   : 'fa-crosshairs',
-                text   : {da:'Centrér', en:'Center'},
-                context: this,
-                onClick: this._button_onClick_setCenter
-            });
-
+        //*/
 
         nsMap.MapLayer.call(this, options);
+
 
         if (this.options.markerOptions.legendContent){
             this.options.content = this._getLegendContent();
@@ -149,11 +163,14 @@
             var markerOptions = this.options.markerOptions,
                 marker = new this.options.constructor( markerOptions.latLng, markerOptions );
 
-            marker.bindPopup( this.popupOptions() );
+            if (this.options.popupContentIdAsStr || this.options.buttonList.length)
+                marker.bindPopup( this.popupOptions() );
 
-            marker.on('drag', this._drag, this);
-            marker.on('dragstart', this._dragstart, this);
-            marker.on('dragend', this._dragend, this);
+            if (markerOptions.editable || markerOptions.draggable){
+                marker.on('drag', this._drag, this);
+                marker.on('dragstart', this._dragstart, this);
+                marker.on('dragend', this._dragend, this);
+            }
 
             return marker;
         },
@@ -183,25 +200,31 @@
         Call methodName for all markers in all maps
         *****************************************************/
         _visitAllMaps: function(methodName, arg, onlyContentId = ''){
-            var _this = this,
-                updatePopupContent = true,
+            var _this    = this,
+                _options = _this.options,
+                updatePopupContent  = true,
                 updateLegendContent = true;
 
-            if (onlyContentId)
+            if (onlyContentId){
+                updatePopupContent  = false;
+                updateLegendContent = false;
+
                 $.each(onlyContentId.split(' '), function(index, id){
-                    updatePopupContent  = updatePopupContent  || _this.options.popupContentIdAsStr.includes(id);
-                    updateLegendContent = updateLegendContent || _this.options.legendContentIdAsStr.includes(id);
+                    updatePopupContent  = updatePopupContent  || _options.popupContentIdAsStr.includes(id) || _options.popupExtendedContentIdAsStr.includes(id);
+                    updateLegendContent = updateLegendContent || _options.legendContentIdAsStr.includes(id);
                 });
+            }
 
             $.each(this.info, function(mapIndex, info){
-                if (info && info.layer){
-                    if (info.layer[methodName])
-                        info.layer[methodName].apply(info.layer, arg);
+                var marker = info ? info.layer : null;
+                if (marker){
+                    if (marker[methodName])
+                        marker[methodName].apply(marker, arg);
 
-                    if (info.layer._popup && updatePopupContent)
-                        info.layer._popup.changeContent(_this.popupOptions(), _this);
+                    if ((_options.popupContentIdAsStr || _options.popupExtendedContentIdAsStr) && marker._popup && updatePopupContent)
+                        marker._popup.changeContent(_this.popupOptions(), _this);
                 }
-                if (updateLegendContent)
+                if (_options.legendContentIdAsStr && updateLegendContent)
                     _this._updateLegendContent( mapIndex );
             });
             return this;
@@ -225,8 +248,6 @@
         *****************************************************/
         updateMarker: function(options = {}, forceColor){
             this.options.markerOptions = $.extend(true, this.options.markerOptions, options);
-
-
             return this._visitAllMaps('updateIcon', [this.options.markerOptions, forceColor]);
         },
 
@@ -236,16 +257,21 @@
 
         //_dragstart: Set all popup.options.autoPan = false to allow popup to drag along
         _dragstart: function(/*e*/){
-            $.each(this.info, function(id, info){
-                info.layer._popup.options._save_autoPan = info.layer._popup.options.autoPan;
-                info.layer._popup.options.autoPan = false;
+            $.each(this.info, function(id, marker){
+                var popup = marker._popup;
+                if (popup){
+                    popup.options._save_autoPan = popup.options.autoPan;
+                    popup.options.autoPan = false;
+                }
             });
         },
 
         //_dragend: Reset popup.options.autoPan
         _dragend: function(/*e*/){
-            $.each(this.info, function(id, info){
-                info.layer._popup.options.autoPan = info.layer._popup.options._save_autoPan;
+            $.each(this.info, function(id, marker){
+                var popup = marker._popup;
+                if (popup)
+                    popup.options.autoPan = popup.options._save_autoPan;
             });
         },
 
@@ -255,8 +281,7 @@
         *****************************************************/
         setLatLng: function(latLng){
             this.options.markerOptions.latLng = latLng;
-//            this._visitAllMaps('setLatLng', arguments, 'latlng');//Virker
-            this.updateMarker({colorName: 'red'}); //Virker ikke
+            this._visitAllMaps('setLatLng', arguments, 'latLng');
         },
 
 
@@ -314,19 +339,18 @@
                     //noVerticalPadding   : false,
                     //noHorizontalPadding : true,
                     scroll              : false,
-                    content             : this._getFullPopupContent(false),
-
+                    content             : this.options.popupContentIdAsStr ? this._getFullPopupContent(false, this.options.popupContentIdList) : '',
                     verticalButtons     : true,
                     buttons             : this.options.markerOptions.buttonList
                 };
 
-            if (markerOptions.hasExtendedPopup)
+            if (this.options.popupExtendedContentIdAsStr)
                 result.extended = {
                     width               : markerOptions.extendedPopupWidth,
                     //noVerticalPadding   : false,
                     //noHorizontalPadding : true,
                     scroll              : false,
-                    content             : this._getFullPopupContent(true),
+                    content             : this._getFullPopupContent(true, this.options.popupExtendedContentIdList),
                     verticalButtons     : false
                 };
             return result;
@@ -348,7 +372,6 @@
         This methods must be set for different versions of MapMarker
         *****************************************************/
         getPopupContent: function(/*id, value, extended*/){
-
         },
 
         /*****************************************************
@@ -381,12 +404,12 @@
                     break;
 
                 case 'accuracy':
-                    if (extended && (markerOptions.accuracy !== null)){
-                        var acc = Math.round(markerOptions.accuracy)+'m';
+                    if (extended){
+                        var acc = Math.round(markerOptions.accuracy || 0)+'m';
                         content = {
                             label: {icon: 'fa-plus-minus', text: {da: 'Nøjagtighed', en:'Accuracy'}},
 //                            text : [{da:'Nøjagtigheden er ca. '+acc, en:'The accuracy is approx. '+acc}, ],
-/*or*/                        text : [{da:'Ca. '+acc, en:'Approx. '+acc}, ],
+/*or*/                        text : {da:'Ca. '+acc, en:'Approx. '+acc},
 
 //MANGLER                            onClick: function(){ alert('Skal vise en cirkel med nøjagtigheden'); }
                         };
