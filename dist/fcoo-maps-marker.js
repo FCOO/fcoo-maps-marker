@@ -78,12 +78,13 @@
     MapLayer_Marker
     ***********************************************************/
     function MapLayer_Marker(options = {}) {
-        //Adjust options
-        options.markerOptions = $.extend(true, {}, this.defaultMarkerOptions, options.markerOptions);
+        //options.layerOptions = generel options for any layer added by Map_Layer
+        var markerOptions = $.extend(true, {}, nsMap.defaultMarkerOptions, options.markerOptions || options.layerOptions || {});
+        options.layerOptions = markerOptions;
 
-        options.buttonList = options.markerOptions.buttonList || [];
+        options.buttonList = markerOptions.buttonList || [];
 
-        if (options.markerOptions.inclCenterButton)
+        if (markerOptions.inclCenterButton)
             options.buttonList.push({
                 icon   : 'fa-crosshairs',
                 text   : {da:'Centrér', en:'Center'},
@@ -98,33 +99,33 @@
         }
 
         //popupContent = ids for content in popups
-        options.popupContentIdList = adjust( options.markerOptions.popupContent );
+        options.popupContentIdList = adjust( markerOptions.popupContent );
         options.popupContentIdAsStr = options.popupContentIdList.join(' ');
 
-        if (options.markerOptions.popupExtendedContent){
-            if (options.markerOptions.popupExtendedContent === true){
+        if (markerOptions.popupExtendedContent){
+            if (markerOptions.popupExtendedContent === true){
                 options.popupExtendedContentIdList = options.popupContentIdList;
                 options.popupExtendedContentIdAsStr = options.popupContentIdAsStr;
             }
             else {
-                options.popupExtendedContentIdList = adjust( options.markerOptions.popupExtendedContent );
+                options.popupExtendedContentIdList = adjust( markerOptions.popupExtendedContent );
                 options.popupExtendedContentIdAsStr = options.popupExtendedContentIdList.join(' ');
             }
         }
 
         //legendContent = ids for content in legend. Default = popupContent
-        options.markerOptions.legendContent = options.markerOptions.hasOwnProperty('legendContent') ? options.markerOptions.legendContent || '' : options.markerOptions.popupContent;
-        options.legendContentIdList = adjust( options.markerOptions.legendContent );
+        markerOptions.legendContent = markerOptions.hasOwnProperty('legendContent') ? markerOptions.legendContent || '' : markerOptions.popupContent;
+        options.legendContentIdList = adjust( markerOptions.legendContent );
         options.legendContentIdAsStr = options.legendContentIdList.join(' ');
 
 
-        options.markerOptions = L.BsMarkerBase.prototype._adjustOptions( options.markerOptions );
+        markerOptions = L.BsMarkerBase.prototype._adjustOptions( markerOptions );
 
 
         options.onAdd = $.proxy(this._onAdd, this);
 
-        options.constructor = options.markerOptions.constructor;
-        delete options.markerOptions.constructor;
+        options.constructor = markerOptions.constructor;
+        delete markerOptions.constructor;
 
         /* DEVELOPMENT
         var _this = this;
@@ -136,16 +137,18 @@
         ];
         //*/
 
+
+        //options.layerOptions = markerOptions;
+
         nsMap.MapLayer.call(this, options);
 
-
-        if (this.options.markerOptions.legendContent){
-            this.options.content = this._getLegendContent();
-            this.options.noVerticalPadding = true;
-            this.options.noHorizontalPadding = true;
+        if (markerOptions.legendContent){
+            var legendOptions = this.options.legendOptions = this.options.legendOptions || {};
+            legendOptions.content = this._getLegendContent();
+            legendOptions.noVerticalPadding = true;
+            legendOptions.noHorizontalPadding = true;
         }
         this.options.icon = this.options.icon || this.asIcon();
-
 
     }
 
@@ -159,9 +162,8 @@
         /*****************************************************
         createLayer
         *****************************************************/
-        createLayer: function(/*options*/){
-            var markerOptions = this.options.markerOptions,
-                marker = new this.options.constructor( markerOptions.latLng, markerOptions );
+        createLayer: function(markerOptions){
+            var marker = new this.options.constructor( markerOptions.latLng, markerOptions );
 
             if (this.options.popupContentIdAsStr || this.options.buttonList.length)
                 marker.bindPopup( this.popupOptions() );
@@ -180,7 +182,7 @@
         _onAdd
         *****************************************************/
         _onAdd: function(map){
-            if (this.options.markerOptions.legendContent)
+            if (this.options.layerOptions.legendContent)
                 this._updateLegendContent(map.fcooMapIndex);
         },
 
@@ -188,7 +190,7 @@
         setCenter(map)
         *****************************************************/
         setCenter: function(map){
-            map.setView(this.options.markerOptions.latLng, map.getZoom(), map._mapSync_NO_ANIMATION);
+            map.setView(this.options.layerOptions.latLng, map.getZoom(), map._mapSync_NO_ANIMATION);
         },
         _button_onClick_setCenter: function(id, selected, $button, map){
             this.setCenter(map);
@@ -247,8 +249,8 @@
         Update the marker regarding all options except size
         *****************************************************/
         updateMarker: function(options = {}, forceColor){
-            this.options.markerOptions = $.extend(true, this.options.markerOptions, options);
-            return this._visitAllMaps('updateIcon', [this.options.markerOptions, forceColor]);
+            this.options.layerOptions = $.extend(true, this.options.layerOptions, options);
+            return this._visitAllMaps('updateIcon', [this.options.layerOptions, forceColor]);
         },
 
         _drag: function(e){
@@ -280,7 +282,7 @@
         setLatLng(latLng)
         *****************************************************/
         setLatLng: function(latLng){
-            this.options.markerOptions.latLng = latLng;
+            this.options.layerOptions.latLng = latLng;
             this._visitAllMaps('setLatLng', arguments, 'latLng');
         },
 
@@ -290,7 +292,7 @@
         setSize
         *****************************************************/
         setSize: function(size){
-            this.options.markerOptions.size = size;
+            this.options.layerOptions.size = size;
             return this._visitAllMaps('setSize', [size]);
         },
 
@@ -299,7 +301,7 @@
         setDirection( direction )
         *****************************************************/
         setDirection: function( direction ){
-            this.options.markerOptions.direction = (direction || 0) % 360;
+            this.options.layerOptions.direction = (direction || 0) % 360;
             return this._visitAllMaps('setDirection', [direction], 'velocity orientation');
         },
 
@@ -307,7 +309,7 @@
         setDeltaDirection( deltaDirection )
         *****************************************************/
         setDeltaDirection: function( deltaDirection = 0 ){
-            return this.setDirection( this.options.markerOptions.direction + deltaDirection );
+            return this.setDirection( this.options.layerOptions.direction + deltaDirection );
         },
 
 
@@ -317,7 +319,7 @@
         jquery-bootstrap content-options (eq. as header)
         *****************************************************/
         asIcon: function(){
-            var markerOptions = this.options.markerOptions;
+            var markerOptions = this.options.layerOptions;
             return L.bsMarkerAsIcon(markerOptions.colorName, markerOptions.borderColorName, markerOptions.faClassName);
         },
 
@@ -328,7 +330,7 @@
         Returns the options for the markers popup
         *****************************************************/
         popupOptions: function(){
-            var markerOptions = this.options.markerOptions,
+            var markerOptions = this.options.layerOptions,
                 result = {
                     header: {
                         icon: this.asIcon(),
@@ -341,7 +343,7 @@
                     scroll              : false,
                     content             : this.options.popupContentIdAsStr ? this._getFullPopupContent(false, this.options.popupContentIdList) : '',
                     verticalButtons     : true,
-                    buttons             : this.options.markerOptions.buttonList
+                    buttons             : markerOptions.buttonList
                 };
 
             if (this.options.popupExtendedContentIdAsStr)
@@ -380,7 +382,7 @@
         for the standard/common parts
         *****************************************************/
         getStandardPopupContent: function(id, value, extended){
-            var markerOptions    = this.options.markerOptions,
+            var markerOptions    = this.options.layerOptions,
                 content          = null,
                 displayAsUnknown = false;
 
@@ -483,7 +485,7 @@
         },
 
         _createVelocityContent: function($container, extended){
-            var markerOptions = this.options.markerOptions,
+            var markerOptions = this.options.layerOptions,
                 speed         = markerOptions.speed,
                 direction     = markerOptions.direction;
 
@@ -510,7 +512,7 @@
         *****************************************************/
         _getFullPopupContent: function(extended, contentIdList){
             var _this = this,
-                markerOptions = this.options.markerOptions,
+                markerOptions = this.options.layerOptions,
                 contentList = [];
 
             contentIdList = contentIdList || this.options.popupContentIdList;
