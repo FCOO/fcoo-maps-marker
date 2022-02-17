@@ -286,8 +286,6 @@
             this._visitAllMaps('setLatLng', arguments, 'latLng');
         },
 
-
-
         /*****************************************************
         setSize
         *****************************************************/
@@ -295,7 +293,6 @@
             this.options.layerOptions.size = size;
             return this._visitAllMaps('setSize', [size]);
         },
-
 
         /*****************************************************
         setDirection( direction )
@@ -330,7 +327,7 @@
         Returns the options for the markers popup
         *****************************************************/
         popupOptions: function(){
-            var markerOptions = this.options.layerOptions,
+            var markerOptions = this.options.layerOptions, _this = this,
                 result = {
                     header: {
                         icon: this.asIcon(),
@@ -341,7 +338,8 @@
                     //noVerticalPadding   : false,
                     //noHorizontalPadding : true,
                     scroll              : false,
-                    content             : this.options.popupContentIdAsStr ? this._getFullPopupContent(false, this.options.popupContentIdList) : '',
+                    content             : this._createPopupContent,
+                    contentContext      : _this,
                     verticalButtons     : true,
                     buttons             : markerOptions.buttonList
                 };
@@ -352,7 +350,8 @@
                     //noVerticalPadding   : false,
                     //noHorizontalPadding : true,
                     scroll              : false,
-                    content             : this._getFullPopupContent(true, this.options.popupExtendedContentIdList),
+                    content             : this._createPopupExtendedContent,
+                    contentContext      : _this,
                     verticalButtons     : false
                 };
             return result;
@@ -365,6 +364,28 @@
         *****************************************************/
         _getLegendContent: function(){
             return this._getFullPopupContent(true, this.options.legendContentIdList);
+        },
+
+
+        /*****************************************************
+        _createPopupContent
+        _createPopupExtendedContent
+        *****************************************************/
+        _createPopupContent: function( $container ){
+            var content =   this.options.popupContentIdAsStr ?
+                            this._getFullPopupContent(false, this.options.popupContentIdList) :
+                            '';
+            if (content)
+                $container._bsAppendContent( content );
+        },
+
+        _createPopupExtendedContent: function( $container ){
+            var content =   this.options.popupExtendedContentIdAsStr ?
+                            this._getFullPopupContent(true, this.options.popupExtendedContentIdList) :
+                            '';
+
+            if (content)
+                $container._bsAppendContent( content );
         },
 
 
@@ -516,6 +537,7 @@
                 contentList = [];
 
             contentIdList = contentIdList || this.options.popupContentIdList;
+
             $.each(contentIdList, function(index, id){
                 var content =
                         _this.getPopupContent( id, markerOptions[id], extended ) ||
