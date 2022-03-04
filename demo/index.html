@@ -16,7 +16,7 @@
 <body>
     <script>
         window.fcoo = window.fcoo || {};
-        window.fcoo.DEMO_VERSION = true;
+        //window.fcoo.DEMO_VERSION = true;
         //OR window.fcoo.LOCAL_DATA = true;
     </script>
 
@@ -25,25 +25,34 @@
 
     <script>
         //window.bsIsTouch = true;
-        fcoo.map.createMapLayer["TEST-MARKER"] = function(options, addMenu){
+        fcoo.map.createMapLayer["TEST-MARKER-1"] = function(options, addMenu){
             var mapLayer = 
-                    fcoo.map._addMapLayer('TEST-MARKER', fcoo.map.MapLayer_Marker, {
-                        text:'Test', 
+                    fcoo.map._addMapLayer('TEST-MARKER-1', fcoo.map.MapLayer_Marker, {
+                        text:'Test-1', 
                         layerOptions: {
                             colorName: 'red',
                             latLng: L.latLng(55, 12),
-                            //accuracy        : 60,
+
+                            accuracy        : 60.123456789,
                             //accuracy        : null,
                             speed           : 20,
                             direction       : 123,
-                            altitude        : null,//32,
+                            altitude        : 3212,
                             altitudeAccuracy: 2,
-draggable: true,
+                            draggable: true,
 
-                            popupContent        : ['latLng', 'velocity'],
-                            popupExtendedContent: ['latLng', 'accuracy', 'altitude', 'altitudeAccuracy', 'velocity'],
-                            legendContent       : ['latLng', 'accuracy', 'altitude', 'altitudeAccuracy', 'velocity'],
+                            datasetShowWhenNull : function(datasetValue, options){ 
+                                return !options.compact;
+                            },
 
+
+                            popupContent        : ['latLng',             'altitude',          'velocity'],
+                            popupExtendedContent: ['latLng', 'accuracy', 'altitude_accuracy', 'velocity_extended'],
+                           
+                            //legendContent       : ['latLng', 'accuracy', 'altitude', 'altitudeAccuracy', 'velocity'],
+                            legendContent       : ['altitudeAccuracy', 'altitude_accuracy', 'latLng', 'accuracy', 'altitude', 'speed', 'direction', 'direction_text', 'direction_vector'
+                                                    , {id:'TEST', text:'TEST', datasetValueIdList:['direction', 'direction_text', 'direction_vector']}
+                                                  ],
 
                             inclCenterButton: true,
 
@@ -55,19 +64,48 @@ draggable: true,
                     });
 
             addMenu( mapLayer.menuItemOptions() );
-
-/*
-setTimeout( function(){
-    mapLayer.updateMarker({speed: 200});
-}, 5000);
-setTimeout( function(){
-    mapLayer.updateMarker({accuracy: 12});
-}, 5000);
-*/
-
         };
 
+/*
+        fcoo.map.createMapLayer["TEST-MARKER-2"] = function(options, addMenu){
+            var mapLayer = 
+                    fcoo.map._addMapLayer('TEST-MARKER-2', fcoo.map.MapLayer_Marker, {
+                        text:'Test-2', 
+                        layerOptions: {
+                            colorName: 'green',
+                            latLng: L.latLng(55, 13),
 
+                            accuracy        : 60.123456789,
+                            //accuracy        : null,
+                            speed           : 20,
+                            direction       : null,
+                            altitude        : null,//32,
+                            altitudeAccuracy: 2,
+                            draggable: true,
+
+
+                            datasetShowWhenNull : function(datasetValue, options){ 
+                                return !options.compact;
+                            },
+
+
+                            popupContent        : ['latLng', 'accuracy', 'speed', 'direction', 'direction_text', 'direction_vector', 'TEST'],
+                            popupExtendedContent: ['latLng', 'accuracy', 'speed', 'direction', 'direction_text', 'direction_vector', 'TEST'], //'accuracy', 'altitude', 'altitudeAccuracy', 'velocity'],
+                            //legendContent       : ['latLng', 'accuracy', 'altitude', 'altitudeAccuracy', 'velocity'],
+                            legendContent       : ['latLng', 'accuracy', 'speed', 'direction', 'direction_text', 'direction_vector', 'TEST'],
+
+                            inclCenterButton: true,
+
+                            innerIconClass: 'fa-home',
+                            puls: true,
+                            //scaleInner: 180,
+                            noBorder: false//true
+                        }
+                    });
+
+            addMenu( mapLayer.menuItemOptions() );
+        };
+*/
 
         window.fcoo.map.createApplication(
             //options
@@ -77,7 +115,8 @@ setTimeout( function(){
             },
 
             //layerMenu
-            ["TEST-MARKER"]
+            //["TEST-MARKER-1", "TEST-MARKER-2"]
+            ["TEST-MARKER-1"]
         );
 
         

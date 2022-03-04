@@ -1,0 +1,204 @@
+{
+    "dmi": {
+        "name": { "da": "Danmarks Meteorologiske Institut", "en": "Danish Meteorological Institute" },
+        "link": { "da": "https://dmi.dk",  "en": "https://dmi.dk" }
+    },
+
+    "ecmwf": {
+        "name": { "en": "European Centre for Medium-Range Weather Forecasts" },
+        "link": { "en": "https://www.ecmwf.int" }
+    },
+
+    "noaa": {
+        "name": { "en": "National Oceanic and Atmospheric Administration" },
+        "link": { "en": "https://noaa.gov" }
+    },
+
+    "fnmoc": {
+        "name": {"en": "The Fleet Numerical Meteorology and Oceanography Center" },
+        "link": {"en": "https://www.usno.navy.mil/FNMOC" }
+    },
+
+    "navo": {
+        "name": { "en": "The Naval Oceanographic Office" },
+        "link": { "en": "https://www.usno.navy.mil/NAVO" }
+    },
+
+    "bsh": {
+        "name": { "en": "Federal Maritime and Hydrographic Agency", "de": "Bundesamt für Seeschifffahrt und Hydrographie" },
+        "link": { "en": "https://www.bsh.de/EN", "de": "https://www.bsh.de" }
+    },
+
+    "smhi": {
+        "name": { "en": "Swedish Meteorological and Hydrological Institute", "sv": "Sveriges meteorologiska och hydrologiska institut" },
+        "link": { "en": "https://www.smhi.se/en", "sv": "https://www.smhi.se" }
+    },
+
+    "getm": {
+        "name": { "en": "General Estuarine Transport Model" },
+        "link": { "en": "https://getm.eu"                   }
+    },
+    "hycom": {
+        "name": {"en": "Hybrid Coordinate Ocean Model"},
+        "link": {"en": "https://www.hycom.org/"}
+    },
+    "cice": {
+        "name" : {"en": "Community Ice CodE"},
+        "link" : {"en": "https://www7320.nrlssc.navy.mil/GLBhycomcice1-12"},
+        "link2": {"en": "http://www.cesm.ucar.edu/models/ccsm4.0/cice"}
+    },
+    "gofs": {
+        "name": {"en": "Global Ocean Forecast System"},
+        "link": {"en": "https://www7320.nrlssc.navy.mil/GLBhycomcice1-12"}
+    },
+    "rtofs": {
+        "name": {"en": "Real-Time Ocean Forecast System"},
+        "link": {"en": "https://nomads.ncep.noaa.gov/txt_descriptions/RTOFS_global_model_forecast_doc.shtml"},
+        "link2": {"en": "https://polar.ncep.noaa.gov/global/"}
+    },
+    "harmonie": {
+        "name": {"en":"Harmonie"    },
+        "link": {"en": "http://hirlam.org/index.php/hirlam-programme-53/general-model-description/mesoscale-harmonie" }
+
+    },
+    "ifs": {
+        "name": { "en": "Integrated Forecasting System"                              },
+        "link": { "en": "https://www.ecmwf.int/en/research/modelling-and-prediction" }
+    },
+    "ww3": {
+        "name": { "en": "WAVEWATCH III"     },
+        "link": {"en": "https://github.com/NOAA-EMC/WW3"}
+    },
+    "swan": {
+        "name": { "en": "Simulating WAves Nearshore"     },
+        "link": { "en": "http://swanmodel.sourceforge.net"}
+    },
+    "wam": {
+        "name": { "en": "ECMWF wave model WAM" },
+        "link": { "en": "https://www.ecmwf.int/node/19751" }
+    },
+
+    "dma": {
+        "abbr": { "da": "SfS",                              "en": "DMA" },
+        "name": { "da": "Søfartsstyrelsen",                 "en": "Danish Maritime Authority" },
+        "link": { "da": "https://www.soefartsstyrelsen.dk", "en": "https://www.dma.dk" }
+    },
+    "dpa": {
+        "abbr": { "da": "Lodstilsyn",                       "en": "DPA" },
+        "name": { "da": "Lodstilsyn",                       "en": "Danish Pilotage Authority" },
+        "link": { "da": "https://www.soefartsstyrelsen.dk/sikkerhed-til-soes/sejladssikkerhed/lodstilsyn", "en": "" },
+        "linkOLD": { "da": "http://www.lodstilsyn.dk", "en": "http://us.lodstilsyn.dk" }
+    },
+    "danpilot": {
+        "name": { "da": "DanPilot"},
+        "link": { "da": "https://danpilot.dk" }
+    },
+    "BeredskabFyn": {
+        "name": {"da": "Beredskab Fyn", "en": ""},
+        "link": ""
+    },
+    "EsbjergHavn": {
+        "name": {"da": "Esbjerg Havn", "en": ""},
+        "link": ""
+    },
+    "FredensborgForsyning": {
+        "name": {"da": "Fredensborg Forsyning", "en": ""},
+        "link": ""
+    },
+    "FrederikssundKommune": {
+        "name": {"da": "Frederikssund Kommune", "en": "Frederikssund Municipality"},
+        "link": ""
+    },
+    "GuldborgsundKommune": {
+        "name": {"da": "Guldborgsund Kommune", "en": "Guldborgsund Municipality"},
+        "link": ""
+    },
+    "HalsnaesForsyning": {
+        "name": {"da": "Halsnæs Forsyning", "en": "Halsnaes Forsyning"},
+        "link": ""
+    },
+    "HirtshalsHavn": {
+        "name": {"da": "Hirtshals Havn", "en": "Port of Hirtshals"},
+        "link": ""
+    },
+    "HorsensHavn": {
+        "name": {"da": "Horsens Havn", "en": "Port of Horsens"},
+        "link": ""
+    },
+    "HorsensVand": {
+        "name": {"da": "Horsens Vand", "en": ""},
+        "link": ""
+    },
+    "KlarForsyning": {
+        "name": {"da": "Klar Forsyning", "en": ""},
+        "link": ""
+    },
+    "KoldingHavn": {
+        "name": {"da": "Kolding Havn", "en": "Port of Kolding"},
+        "link": ""
+    },
+    "LemvigKommune": {
+        "name": {"da": "Lemvig Kommune", "en": "Lemvig Municipality"},
+        "link": ""
+    },
+    "LoegstoerKommune": {
+        "name": {"da": "Løgstør Kommune", "en": "Loegstoer Municipality"},
+        "link": ""
+    },
+    "lollandKommune": {
+        "name": {"da": "lolland Kommune", "en": "lolland Municipality"},
+        "link": ""
+    },
+    "MariagerfjordKommune": {
+        "name": {"da": "Mariagerfjord Kommune", "en": "Mariagerfjord Municipality"},
+        "link": ""
+    },
+    "NykoebingMorsHavn": {
+        "name": {"da": "Nykøbing Mors Havn", "en": "Nykoebing Mors Harbor"},
+        "link": ""
+    },
+    "OdenseHavn": {
+        "name": {"da": "Odense Havn", "en": "Port of Odense"},
+        "link": ""
+    },
+    "OdsherredHavne": {
+        "name": {"da": "Odsherred Havne", "en": "Odsherred Harbors"},
+        "link": ""
+    },
+    "SkagenHavn": {
+        "name": {"da": "Skagen Havn", "en": "Port of Skagen"},
+        "link": ""
+    },
+    "SkiveKommune": {
+        "name": {"da": "Skive Kommune", "en": "Skive Municipality"},
+        "link": ""
+    },
+    "StruerKommune": {
+        "name": {"da": "Struer Kommune", "en": "Struer Municipality"},
+        "link": ""
+    },
+    "SvendborgHavn": {
+        "name": {"da": "Svendborg Havn", "en": "Svendborg Harbor"},
+        "link": ""
+    },
+    "ThistedHavn": {
+        "name": {"da": "Thisted Havn", "en": "Thisted Harbor"},
+        "link": ""
+    },
+    "VejleHavn": {
+        "name": {"da": "Vejle Havn", "en": "Vejle Harbor"},
+        "link": ""
+    },
+    "VesteroeHavn": {
+        "name": {"da": "Vesterø Havn", "en": "Vesteroe Harbor"},
+        "link": ""
+    },
+    "AabenraaKommune": {
+        "name": {"da": "Aabenraa Kommune", "en": "Aabenraa Municipality"},
+        "link": ""
+    },
+    "AalborgHavn": {
+        "name": {"da": "Aalborg Havn", "en": "Port of Aalborg"},
+        "link": ""
+    }
+}

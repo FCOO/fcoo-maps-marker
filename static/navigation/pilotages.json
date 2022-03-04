@@ -1,0 +1,16 @@
+{
+    "description": "This is the official list of pilotage from dma at https://www.soefartsstyrelsen.dk/sikkerhed-til-soes/sejladssikkerhed/lodstilsyn/lodserier. The list is a direct copy from the homepage adjusted with english names and links",
+    "list": [
+        {"name": {"da": "DanPilot/Det Statslige Lodsvæsen", "en": "DanPilot" },                     "link": "https://danpilot.dk/" },
+        {"name": {"da": "Danish Pilot Service, Fredericia" },                                       "link": "http://www.danishpilotservice.dk" },
+        {"name": {"da": "Aarhus Havn",                      "en": "Port of Aarhus" },               "link": "https://www.portofaarhus.dk" },
+        {"name": {"da": "Skawpilot ApS"                    },                                       "link": "https://www.skagenlods.dk" },
+        {"name": {"da": "Hanstholm Havnelodseri",           "en": "Port of Hanstholm Pilotage" },   "link": "https://www.hanstholmhavn.dk" },
+        {"name": {"da": "Hirtshals Havnelodseri",           "en": "Port of Hirtshals Pilotage" },   "link": "https://www.hirtshalshavn.dk" },
+        {"name": {"da": "Limfjord Pilot ApS"               },                                       "link": "https://www.limfjordpilot.dk" },
+        {"name": {"da": "Great Belt Pilot ApS"             },                                       "link": "https://greatbeltpilot.com" },
+        {"name": {"da": "Little Belt Pilot Service ApS"    },                                       "link": "https://www.littlebeltpilotservice.dk" },
+        {"name": {"da": "Portus Pilot IVS"                 },                                       "link": "http://portuspilot.dk" },
+        {"name": {"da": "Imaq Pilot"                       },                                       "link": "https://imaq-pilot.com" }
+    ]
+}

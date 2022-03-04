@@ -1,0 +1,20 @@
+{
+    "WAVE": {
+        "group": "WAVE"
+    },
+    "METEO": {
+        "group": "METEO WIND CLOUD"
+    },
+    "ICE": {
+        "group": "ICE"
+    },
+    "OCEAN": {
+        "group": "OCEAN SEALEVEL HYDRO CURRENT"
+    },
+    "ILLUM": {
+        "group": "ILLUM"
+    },
+    "ASTRO": {
+        "group": "ASTRO"
+    }
+}

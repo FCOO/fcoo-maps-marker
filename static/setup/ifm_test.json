@@ -1,0 +1,28 @@
+{
+    "applicationName": {"da":"NY Dansk titel", "en":"NEW English title"},
+    "topMenu": {
+        "search"  : true,
+        "messages": "data/ifm-maps-info.json",
+        "help"    : {"subDir": "help", "fileName": "fcoo-maps-help.json"},
+        "warning" : {"subDir": "warnings", "fileName": "geometoc_ifm_warning.json"},
+        "helpId"  : {
+            "globalSetting"  : "fcoo-maps-setting",
+            "mapSetting"     : "fcoo-maps-map-setting",
+            "multiMapSetting": "fcoo-maps-multi-maps"
+        }
+    },
+    "map": {
+        "minZoom": 3,
+        "maxZoom": 12
+    },
+    "multiMaps": {
+        "enabled"      : true,
+        "maxMaps"      : {
+            "mobile" : 3,
+            "tablet" : 5,
+            "desktop": 5
+        },
+        "maxZoomOffset": 2,
+        "allowDifferentTime": true
+    }
+}

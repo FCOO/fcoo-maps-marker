@@ -1,0 +1,429 @@
+{
+    "wind_from_direction": {
+        "unit": "degree",
+        "name": {"da": "Vindretning", "en": "Wind Direction"},
+        "group": "WIND"
+    },
+    "wind_to_direction": {
+        "unit": "degree",
+        "name": {"da": "Vindretning", "en": "Wind Direction"},
+        "group": "WIND",
+        "asTextFrom": true
+    },
+    
+    "wind_speed": {
+        "unit": "m s-1",
+        "name": {"da": "Vindhastighed", "en": "Wind Speed"},
+        "group": "WIND"
+    },
+    
+    "eastward_wind": {
+        "unit": "m s-1",
+        "negative": true,
+        "TODOname": {"da": "", "en": ""},
+        "group": "WIND"
+    },
+    "northward_wind": {
+        "unit": "m s-1",
+        "negative": true,
+        "TODOname": {"da": "", "en": ""},
+        "group": "WIND"
+    },
+    "wind": {
+        "type": "vector",
+        "standard"  : false,
+        "eastward_northward": ["eastward_wind", "northward_wind"],
+        "speed_direction": ["wind_speed", "wind_to_direction"],
+        "name": {"da": "Vind", "en": "Wind"},
+        "group": "WIND"
+    },
+
+    
+    "wind_speed_of_gust": {
+        "unit": "m s-1",
+        "name": {"da": "Vindstød-hastighed", "en": "Wind Gust Speed"},
+        "group": "WIND"
+    },
+    "wind_gust_to_direction": {
+        "unit": "degree",
+        "standard": false,
+        "name": {"da": "Vindstød-retning", "en": "Wind Gust Direction"},
+        "group": "WIND",
+        "asTextFrom": true
+    },
+    "wind_gust": {
+        "type": "vector",
+        "standard"  : false,
+        "speed_direction": ["wind_speed_of_gust", "wind_gust_to_direction"],
+        "name": {"da": "Vindstød", "en": "Wind Gust"},
+        "group": "WIND"
+    },
+
+    
+    "precipitation_flux": {
+        "unit": "kg m-2 s-1",
+        "TODOname": {"da": "", "en": ""},
+        "group": "METEO"
+    },
+    
+    "convective_precipitation_flux": {
+        "unit": "kg m-2 s-1",
+        "TODOname": {"da": "", "en": ""},
+        "group": "METEO"
+    },
+    
+    "stratiform_precipitation_flux": {
+        "unit": "kg m-2 s-1",
+        "TODOname": {"da": "", "en": ""},
+        "group": "METEO"
+    },
+    
+    "precipitation_amount": {
+        "unit": "kg m-2",
+        "name": {"da": "Nedbør", "en": "Precipitation"},
+        "group": "METEO"
+    },
+    
+    "stratiform_precipitation_amount": {
+        "unit": "kg m-2",
+        "TODOname": {"da": "", "en": ""},
+        "group": "METEO"
+    },
+    
+    "convective_precipitation_amount": {
+        "unit": "kg m-2",
+        "TODOname": {"da": "", "en": ""}
+    },
+    
+    "thunderstorm_probability": {
+        "unit": "1",
+        "TODOname": {"da": "", "en": ""},
+        "group": "METEO"
+    },
+    
+    "air_pressure": {
+        "unit": "Pa",
+        "TODOname": {"da": "", "en": ""},
+        "group": "METEO"
+    },
+    
+    "air_pressure_at_mean_sea_level": {
+        "unit": "Pa",
+        "CF_SN_alias": "air_pressure_at_sea_level",
+        "name": {"da": "Lufttryk", "en": "Air Pressure"},
+        "group": "METEO"
+    },
+    
+    "air_temperature": {
+        "unit": "degC",
+        "negative": true,
+        "name": {"da": "Temperatur (luft)", "en": "Temeprature (Air)"},
+        "group": "METEO"
+    },
+    
+    "visibility_in_air": {
+        "unit": "m",
+        "decimals": 0,
+        "name": {"da": "Sigtbarhed (luft)", "en": "Visibility (Air)"},
+        "group": "METEO"
+    },
+    
+    "speed_of_sound_in_air": {
+        "unit": "m s-1",
+        "name": {"da": "Lydshasighed (luft)", "en": "Speed of Sound (Air)"},
+        "group": "METEO"
+    },
+    
+    "cloud_area_fraction": {
+        "unit": "1",
+        "name": {"da": "Skydække (samlet??)", "en": "Cloud Cover (Total??)"},
+        "group": "CLOUD"
+    },
+    
+    "convective_cloud_area_fraction": {
+        "unit": "1",
+        "name": {"da": "Skydække (CONVECTIVE??)", "en": "Cloud Cover (CONVECTIVE???)"},
+        "group": "CLOUD"
+    },
+    
+    "low_type_cloud_area_fraction": {
+        "unit": "1",
+        "name": {"da": "Skydække (LAV???)", "en": "Cloud Cover (LOW???)"},
+        "group": "CLOUD"
+    },
+    
+    "medium_type_cloud_area_fraction": {
+        "unit": "1",
+        "name": {"da": "Skydække (MEDIUM??)", "en": "Cloud Cover (MEDIUM??)"},
+        "group": "CLOUD"
+    },
+    
+    "high_type_cloud_area_fraction": {
+        "unit": "1",
+        "name": {"da": "Skydække (HIGH??)", "en": "Cloud Cover  (HIGH??)"},
+        "group": "CLOUD"
+    },
+    
+    "sea_surface_height_above_mean_sea_level": {
+        "unit": "m",
+        "negative": true,
+        "decimals": 2,
+        "CF_SN_alias": "sea_surface_height_above_sea_level",
+        "name": {"da": "Vandstand", "en": "Sea Level"},
+        "group": "SEALEVEL"
+    },
+    
+    "sea_ice_area_fraction": {
+        "unit": "1",
+        "name": {"da": "Havis-koncentration", "en": "Sea Ice Concentration"},
+        "group": "ICE"
+    },
+    
+    "sea_ice_thickness": {
+        "unit": "m",
+        "name": {"da": "Havis-tykkelse", "en": "Sea Ice Thickness"},
+        "group": "ICE"
+    },
+    
+    "direction_of_sea_ice_velocity": {
+        "unit": "degree",
+        "TODOname": {"da": "", "en": ""},
+        "group": "ICE"
+    },
+    
+    "sea_ice_speed": {
+        "unit": "m s-1",
+        "name": {"da": "Havis-drifthastighed", "en": "Sea Ice Drift Speed"},
+        "group": "ICE"
+    },
+    
+    "tendency_of_sea_ice_thickness_due_to_thermodynamics": {
+        "unit": "m s-1",
+        "TODOname": {"da": "", "en": ""},
+        "group": "ICE"
+    },
+    
+    "sea_water_salinity": {
+        "unit": "1e-3",
+        "name": {"da": "Salinitet", "en": "Salinity"},
+        "group": "HYDRO"
+    },
+    
+    "sea_surface_salinity": {
+        "unit": "1e-3",
+        "TODOname": {"da": "", "en": ""},
+        "group": "HYDRO"
+    },
+    
+    "sea_water_density": {
+        "unit": "kg m-3",
+        "name": {"da": "Massefylde (hav)", "en": "Density (Sea)"},
+        "group": "HYDRO"
+    },
+    
+    "sea_water_temperature": {
+        "unit": "degC",
+        "negative": true,
+        "name": {"da": "Temperatur (hav)", "en": "Temperature (Sea)"},
+        "group": "HYDRO"
+    },
+    
+    "speed_of_sound_in_sea_water": {
+        "unit": "m s-1",
+        "name": {"da": "Lydhastighed (hav)", "en": "Speed of Sound (Sea)"},
+        "decimals": 0,
+        "group": "HYDRO"
+    },
+    
+
+    
+    
+    "sea_water_speed": {
+        "unit": "m s-1",
+        "name": {"da": "Strømhastighed", "en": "Current Speed"},
+        "group": "CURRENT"
+    },
+
+    "sea_water_velocity_to_direction": {
+        "unit": "degree",
+        "CF_SN_alias": "direction_of_sea_water_velocity",
+        "name": {"da": "Strømretning", "en": "Current Direction"},
+        "group": "CURRENT"
+    },
+    "eastward_sea_water_velocity": {
+        "unit": "m s-1",
+        "negative": true,
+        "TODOname": {"da": "", "en": ""},
+        "group": "CURRENT"
+    },
+    "northward_sea_water_velocity": {
+        "unit": "m s-1",
+        "negative": true,
+        "TODOname": {"da": "", "en": ""},
+        "group": "CURRENT"
+    },
+    "sea_water_velocity": {
+        "type": "vector",
+        "standard"  : false,
+        "eastward_northward": ["eastward_sea_water_velocity", "northward_sea_water_velocity"],
+        "speed_direction": ["sea_water_speed", "sea_water_velocity_to_direction"],
+        "name": {"da": "Strøm", "en": "Current"},
+        "group": "CURRENT"
+    },
+
+    "sea_water_speed_at_sea_floor": {
+        "unit": "m s-1",
+        "name": {"da": "Strømhastighed (bund)", "en": "Current Speed (Sea Floor)"},
+        "group": "CURRENT"
+    },
+    "sea_water_velocity_to_direction_at_sea_floor": {
+        "unit": "degree",
+        "name": {"da": "Strømretning (bund)", "en": "Current Direction (Sea Floor)"},
+        "group": "CURRENT"
+    },
+    "eastward_sea_water_velocity_at_sea_floor": {
+        "unit": "m s-1",
+        "negative": true,
+        "TODOname": {"da": "", "en": ""},
+        "group": "CURRENT"
+    },
+    "northward_sea_water_velocity_at_sea_floor": {
+        "unit": "m s-1",
+        "negative": true,
+        "TODOname": {"da": "", "en": ""},
+        "group": "CURRENT"
+    },
+    "sea_water_velocity_at_sea_floor": {
+        "type": "vector",
+        "standard"  : false,
+        "eastward_northward": ["eastward_sea_water_velocity_at_sea_floor", "northward_sea_water_velocity_at_sea_floor"],
+        "speed_direction": ["sea_water_speed_at_sea_floor", "sea_water_velocity_to_direction_at_sea_floor"],
+        "name": {"da": "Strøm (bund)", "en": "Current (Sea Floor)"},
+        "group": "CURRENT"
+    },
+
+
+    "surface_sea_water_speed": {
+        "standard"  : false,
+        "unit"      : "m s-1",
+        "name"      : {"da": "Strømhastighed (overflade)", "en": "Current Speed (Surface)"},
+        "group": "CURRENT"
+    },
+    "surface_sea_water_velocity_to_direction": {
+        "standard"  : false,
+        "unit": "degree",
+        "name": {"da": "Strømretning (overflade)", "en": "Current Direction (Surface)"},
+        "group": "CURRENT"
+    },
+    "surface_eastward_sea_water_velocity": {
+        "unit": "m s-1",
+        "negative": true,
+        "TODOname": {"da": "", "en": ""},
+        "group": "CURRENT"
+    },
+    "surface_northward_sea_water_velocity": {
+        "unit": "m s-1",
+        "negative": true,
+        "TODOname": {"da": "", "en": ""},
+        "group": "CURRENT"
+    },
+    "surface_sea_water_velocity": {
+        "type": "vector",
+        "standard"  : false,
+        "eastward_northward": ["surface_eastward_sea_water_velocity", "surface_northward_sea_water_velocity"],
+        "speed_direction": ["surface_sea_water_speed", "surface_sea_water_velocity_to_direction"],
+        "name": {"da": "Strøm (overflade)", "en": "Current (Surface)"},
+        "group": "CURRENT"
+    },
+
+
+    "sea_surface_wave_significant_height": {
+        "unit": "m",
+        "name": {"da": "Bølgehøjde", "en": "Wave Height"},
+        "group": "WAVE"
+    },
+
+    "sea_surface_wave_to_direction": {
+        "unit": "degree",
+        "name": {"da": "Bølgeretning", "en": "Wave Direction"},
+        "group": "WAVE"
+    },
+    "sea_surface_wave_mean_period": {
+        "unit": "s",
+        "name": {"da": "Bølgeperiode", "en": "Wave Period"}
+    },
+    "sea_surface_wave": {
+        "type": "vector",
+        "standard"  : false,
+        "speed_direction": ["sea_surface_wave_significant_height", "sea_surface_wave_to_direction"],
+        "name": {"da": "Bølger", "en": "Wave"},
+        "group": "WAVE"
+    },
+
+    
+    "sea_surface_wind_wave_significant_height": {
+        "unit": "m",
+        "name": {"da": "Bølgehøjde (vind)", "en": "Wave Height (Wind)"},
+        "group": "WAVE"
+    },
+    "sea_surface_wind_wave_to_direction": {
+        "unit": "degree",
+        "name": {"da": "Bølgeretning (vind)", "en": "Wave Direction (Wind)"},
+        "group": "WAVE"
+    },
+    "sea_surface_wind_wave_period": {
+        "unit": "s",
+        "name": {"da": "Bølgeperiode (vind)", "en": "Wave Period (Wind)"},
+        "group": "WAVE"
+    },
+    "sea_surface_wind_wave": {
+        "type": "vector",
+        "standard"  : false,
+        "speed_direction": ["sea_surface_wind_wave_significant_height", "sea_surface_wind_wave_to_direction"],
+        "name": {"da": "Bølger (vind)", "en": "Wave (Wind)"},
+        "group": "WAVE"
+    },
+
+    
+    "sea_surface_swell_wave_significant_height": {
+        "unit": "m",
+        "name": {"da": "Bølgehøjde (dønninger)", "en": "Wave Height (Swells)"},
+        "group": "WAVE"
+    },
+    "sea_surface_swell_wave_to_direction": {
+        "unit": "degree",
+        "name": {"da": "Bølgeretning (dønninger)", "en": "Wave Direction (Swells)"},
+        "group": "WAVE"
+    },
+    "sea_surface_swell_wave_period": {
+        "unit": "s",
+        "name": {"da": "Bølgeperiode (dønninger)", "en": "Wave Period (Swells)"},
+        "group": "WAVE"
+    },
+    "sea_surface_swell_wave": {
+        "type": "vector",
+        "standard"  : false,
+        "speed_direction": ["sea_surface_swell_wave_significant_height", "sea_surface_swell_wave_to_direction"],
+        "name": {"da": "Dønninger", "en": "Swells"},
+        "group": "WAVE"
+    },
+
+
+
+    "solar_elevation_angle": {
+        "unit": "degree",
+        "negative": true,
+        "name": {"da": "Solhøjde", "en": "Solar Elevation"},
+        "group": "ASTRO",
+        "description": "Solar elevation angle is the angle between the line of sight to the sun and the local horizontal"
+    },
+
+    "solar_azimuth_angle": {
+        "unit": "degree",
+        "name": {"da": "Solretning", "en": "Solar Azimuth Angle"},
+        "group": "ASTRO",
+        "description": "Solar azimuth angle is the horizontal angle between the line of sight to the sun and a reference direction which is often due north. The angle is measured clockwise"
+    }
+
+
+}                                                                    

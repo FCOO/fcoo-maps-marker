@@ -1,0 +1,23 @@
+{
+    "NAVIGATION_ROUTES_DK": {
+        "text"   : {"da": "Ruter (Danmark)", "en":"Routes (Denmark)"},
+        "minZoom": 5,
+        "layers" : "shiplanes-dk_latest"
+    },
+
+    "NAVIGATION_VTS_DK": {
+        "text"  : {"da":"VTS Meldelinjer (Danmark)", "en":"VTS Report Lines (Denmark)"},
+        "minZoom": 5,
+        "layers": "vts-dk_latest"
+    },
+
+    "NAVIGATION_EEZ": {
+        "text"  : {"da":"EEZ (Ekskl. Økonomisk Zone)", "en":"EEZ (Exclusive Economic Zone)"},
+        "layers": "eez_latest"
+    },
+
+    "NAVIGATION_SAR_GL": {
+        "text"  : {"da":"SAR (Grønland)", "en":"SAR (Greenland)"},
+        "layers": "sar_latest"
+    }
+}

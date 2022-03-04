@@ -1,0 +1,143 @@
+[{
+    "id"            : "GETM",
+    "type"          : "ocean",
+    "domainOwner"   : "fcoo",
+    "domainPeriod"  : 6,
+    "domain": [{
+        "id"        : "NSBALTIC",
+        "abbr"      : "NSB",
+        "name"      : {"da": "Nordsøen - Østersøen", "en": "North Sea - Baltic Sea"},
+
+        "_link"     : "Her kommer et link til en fcoo-side med beskrivelse af vores modeller og opsætninger",
+
+        "nc"        : "dk_nested.velocities.Z3D.nc.json",
+        "mask"      : "FCOO_GETM_NSBALTIC.json",
+        "resolution": "1nm"
+    },{
+        "id"        : "INNER_DK",
+        "abbr"      : "IDK",
+        "name"      : {"da": "Indre danske Farvande", "en": "Inner Danish Waters"},
+
+        "_link"     : "Her kommer et link til en fcoo-side med beskrivelse af vores modeller og opsætninger",
+
+        "nc"        : "dk_nested.velocities.Z3D.nc.json",
+        "mask"      : "FCOO_GETM_DKINNER.json",
+        "resolution": "600m",
+        "area"      : "local"
+    }]
+},{
+    "id"            : "WW3",
+    "type"          : "ocean",
+    "domainOwner"   : "fcoo",
+    "domainPeriod"  : 6,
+    "domain": [{
+        "id"        : "NSBALTIC",
+        "abbr"      : "NSB",
+        "name"      : {"da": "Nordsøen - Østersøen", "en": "North Sea - Baltic Sea"},
+
+        "_link"     : "Her kommer et link til en fcoo-side med beskrivelse af vores modeller og opsætninger",
+
+        "mask"      : "FCOO_WW3_NSBALTIC.json",
+        "nc"        : "ww3.nsbalt_nested.nc.json",
+        "resolution": "3nm"
+    },{
+        "id"        : "INNER_DK",
+        "abbr"      : "IDK",
+        "name"      : {"da": "Indre danske Farvande", "en": "Inner Danish Waters"},
+
+        "_link"     : "Her kommer et link til en fcoo-side med beskrivelse af vores modeller og opsætninger",
+
+        "mask"      : "FCOO_WW3_DKINNER.json",
+        "nc"        : "ww3.nsbalt_nested.nc.json",
+        "resolution": "1nm",
+        "area"      : "local"
+    }]
+},{
+    "id"            : "HARMONIE",
+    "type"          : "met",
+    "domainOwner"   : "dmi",
+    "domain": [{
+        "id"        : "NEA",
+        "name"      : {"da": "Nordvest Europa", "en": "Northwest Europe"},
+        "link"      : "https://www.dmi.dk/vejr-og-atmosfare/temaforside-vejrmodeller-step-by-step-for-de-nysgerrige-og-nordede/harmonie-dmis-vejrmodel",
+        "resolution": "2.5km",
+        "period"    : 6,
+        "mask"      : "DMI_HARMONIE_NEA.json",
+        "nc"        : "DMI_NEA_MAPS_v005C.nc.json"
+    },{
+        "id"        : "IGB",
+        "name"      : {"da": "Grønland / Island", "en": "Greenland / Iceland"},
+        "link"      : "https://www.dmi.dk/vejr-og-atmosfare/temaforside-vejrmodeller-step-by-step-for-de-nysgerrige-og-nordede/harmonie-dmis-vejrmodel",
+        "resolution": "2.5km",
+        "period"    : 6,
+        "mask"      : "DMI_HARMONIE_IGB.json",
+        "nc"        : "DMI_IGB_MAPS.nc.json"
+    }]
+},
+{
+    "id": "IFS",
+    "domain": [{
+        "id"        : "DYSD",
+        "abbr"      : "GLB",
+        "name"      : {"da": "Global", "en": "Global"},
+        "owner"     : "ecmwf",
+        "area"      : "global",
+        "resolution": "9km",
+        "period"    : 12,
+        "nc"        : "ECMWF_DYSD_MAPS_GLOBAL.nc.json"
+    }]
+},
+{
+    "id"    : "WAM",
+    "type"  : "ocean",
+    "domain": [{
+        "id"        : "DYQP",
+        "abbr"      : "GLB",
+        "name"      : {"da": "Global", "en": "Global"},
+        "link"      : {"en": "https://www.ecmwf.int/en/research/modelling-and-prediction/marine"},
+        "owner"     : "ecmwf",
+        "area"      : "global",
+        "resolution": "1/8°",
+        "period"    : 12,
+        "nc"        : "ECMWF_DYQP_MAPS_GLOBAL.nc.json"
+    }]
+},
+{
+    "id"    : "HYCOM",
+    "type"  : "ocean",
+    "domain": [{
+        "id"        : "RTOFS",
+        "owner"     : "noaa",
+        "area"      : "regional",
+        "resolution": "1/12°",
+        "period"    : 24,
+        "mask"      : "NOAA_HYCOM_MEDSEA.json",
+        "nc"        : "NOAA_HYCOM_MEDSEA.nc.json"
+    },{
+        "id"        : "GOFS",
+        "owner"     : "fnmoc",
+        "resolution": "1/12°",
+        "period"    : 24,
+        "mask"      : "FNMOC_HYCOM_GREENLAND_MANGLER.json",
+        "nc"        : "MAPS_STENNIS_ICE_v005C.nc.json"
+    }
+    ]
+},
+
+{
+    "id"    : "CICE",
+    "type"  : "ocean",
+    "domain": [{
+        "id"        : "GOFS",
+        "owner"     : "fnmoc",
+        "area"      : "regional",
+        "resolution": "1/12°",
+        "period"    : 24,
+        "mask"      : "FNMOC_CICE_GREENLAND_MANGLER.json",
+        "nc"        : "MAPS_STENNIS_ICE_v005C.nc.json"
+    }]
+
+
+
+}]
+

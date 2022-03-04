@@ -1,0 +1,24 @@
+{
+    "default_station": {
+        "owner"      : "FCOO",
+        "provider"   : "FCOO",
+        "parameter"  : "surface_sea_water_velocity",
+        "formatUnit" : "nm h-1",
+        "level"      : "",
+        "refLevel"   : "SEASURFACE",
+        "observation": {
+            "surface_sea_water_velocity": "CURRENT_SURFACE_{id}.json"
+        },
+        "forecast"   : false,
+        "active"     : true
+
+
+    },
+
+    "locationList": [
+        {"id": "DROGDEN",               "station": {"id":"DRGN", "position":[55.536, 12.712],   "_forecast": {"sea_water_velocity": "frv_getmc_timeseries_drogden_current_010.json" }}},
+        {"id": "VENGEANCEGRUND",        "station": {"id":"VNGC", "position":[55.229, 11.09 ],   "_forecast": {"sea_water_velocity": "frv_getmc_timeseries_vengeance_current_010.json"}}},
+        {"id": "GREATBELTBRIDGE_EAST",  "station": {"id":"GBBE", "position":[55.34 , 11.018],   "forecast": false}}
+    ]
+}
+
