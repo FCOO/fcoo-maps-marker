@@ -1,1 +1,0 @@
-external.json contains meta-data for external layers or services. Even if the service is hosted internally it will appear in this setup-file

@@ -1,7 +1,0 @@
-{
-    "fcoo": {
-        "name" : { "da": "Forsvarets Center for Operativ Oceanografi", "en": "Defence Centre for Operational Oceanography" },
-        "link" : { "da": "//fcoo.dk", "en": "//fcoo.dk?lang=en" },
-        "email": { "da": "info@fcoo.dk", "en": "info@fcoo.dk" }
-    }
-}
