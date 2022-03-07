@@ -37,12 +37,8 @@
 
         /*
         Content of popup, popup-extended and legend are given by
-        1: options.datasetValueList = []ID or DATASETVALUE-OPTIONS or DATASETVALUE = List of all DatasetValue that can be partof popup(-extended) and legend
-        2: options.popupContent, options.popupupExtendedContent, options.legendContent = BOOLEAN or STRING or []ID with order and ids of DatasetValue-ids for options.
-            if false no content. if true all DatasetValue
+        options.popupContent, options.popupupExtendedContent, options.legendContent = BOOLEAN or STRING or []ID with order and ids of DatasetValue-ids for options.
         */
-        datasetValueList    : ['latLng'],
-
         popupContent        : 'latLng', //[]ID or STRING of IDs = The dataset-values to include in popup
         popupWidth          : 120,
 
