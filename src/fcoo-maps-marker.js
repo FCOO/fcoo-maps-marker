@@ -114,10 +114,11 @@
         }
 
         //Create list of needed datasetValues (if any)
-        var datasetValueIds = {},
+        var _this = this,
+            datasetValueIds = {},
             datasetValueList = [];
         $.each(['popupContent', 'popupExtendedContent', 'legendContent'], function(index, contentListId){
-            $.each(markerOptions[contentListId] || [], function(index, datasetValue_or_options_or_id){
+            $.each(_this[contentListId] || [], function(index, datasetValue_or_options_or_id){
                 var id;
                 if (typeof datasetValue_or_options_or_id == 'string')
                     id = datasetValue_or_options_or_id;
@@ -213,10 +214,22 @@
         /*****************************************************
         setLatLng(latLng)
         *****************************************************/
+        setDataset: function(data, callAllLayerMethod, arg){
+            $.extend(this.options.layerOptions, data);
+            this.dataset.setData(data);
+            if (callAllLayerMethod)
+                this.callAllLayers( callAllLayerMethod, arg);
+        },
+
+
+        /*****************************************************
+        setLatLng(latLng)
+        *****************************************************/
         setLatLng: function(latLng){
-            this.options.layerOptions.latLng = latLng;
-            this.dataset.setData({latLng: latLng});
-            this.callAllLayers( 'setLatLng', arguments);
+            this.setDataset({latLng: latLng}, 'setLatLng', arguments);
+//HER            this.options.layerOptions.latLng = latLng;
+//HER            this.dataset.setData({latLng: latLng});
+//HER            this.callAllLayers( 'setLatLng', arguments);
         },
 
         /*****************************************************

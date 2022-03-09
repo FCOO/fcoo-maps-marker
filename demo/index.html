@@ -16,11 +16,13 @@
 <body>
     <script>
         window.fcoo = window.fcoo || {};
-        //window.fcoo.DEMO_VERSION = true;
+        window.fcoo.DEMO_VERSION = true;
         //OR window.fcoo.LOCAL_DATA = true;
     </script>
 
     <script src="bower_components.js"></script>
+    <script src="dataset.js"></script>
+    <script src="dataset-value.js"></script>
     <script src="../src/fcoo-maps-marker.js"></script>
 
     <script>
@@ -28,7 +30,7 @@
         fcoo.map.createMapLayer["TEST-MARKER-1"] = function(options, addMenu){
             var mapLayer = 
                     fcoo.map._addMapLayer('TEST-MARKER-1', fcoo.map.MapLayer_Marker, {
-                        text:'Test-1', 
+                        text: {da:'Test-1'} , 
                         layerOptions: {
                             colorName: 'red',
                             latLng: L.latLng(55, 12),
@@ -36,22 +38,24 @@
                             accuracy        : 60.123456789,
                             //accuracy        : null,
                             speed           : 20,
-                            direction       : 123,
+                            direction       : null,
                             altitude        : 3212,
-                            altitudeAccuracy: 2,
+                            altitudeAccuracy: null,
+
                             draggable: true,
 
-                            datasetShowWhenNull : function(datasetValue, options){ 
-                                return !options.compact;
-                            },
+//HER                            datasetShowWhenNull : function(datasetValue, options){ 
+//HER                                return !options.compact;
+//HER                            },
 
 
                             popupContent        : ['latLng',             'altitude',          'velocity'],
                             popupExtendedContent: ['latLng', 'accuracy', 'altitude_accuracy', 'velocity_extended'],
                            
-                            //legendContent       : ['latLng', 'accuracy', 'altitude', 'altitudeAccuracy', 'velocity'],
-                            legendContent       : ['altitudeAccuracy', 'altitude_accuracy', 'latLng', 'accuracy', 'altitude', 'speed', 'direction', 'direction_text', 'direction_vector'
-                                                    , {id:'TEST', text:'TEST', datasetValueIdList:['direction', 'direction_text', 'direction_vector']}
+                            _legendContent       : ['latLng', /*'accuracy', 'altitudeAccuracy',*/ 'altitude_accuracy'/*, 'velocity_extended'*/],
+                            __legendContent       : true, //['latLng', 'accuracy', /*'altitude', 'altitudeAccuracy', 'velocity'*/],
+                            legendContent       : ['latLng',  'accuracy', 'altitude_accuracy', 'altitude', 'velocity_extended'//, 'speed', 'direction', 'direction_text', 'direction_vector'
+                                                    , {id:'TEST', text:'TEST', datasetValueIdList:['direction', 'direction_text', 'direction_vector'], }
                                                   ],
 
                             inclCenterButton: true,
@@ -64,6 +68,34 @@
                     });
 
             addMenu( mapLayer.menuItemOptions() );
+
+
+
+        
+        
+setTimeout(function(){
+    console.log('Så...');
+    mapLayer.setDataset({
+        altitude: 3000,
+       altitudeAccuracy: 12 
+    });
+
+    mapLayer.setDataset({direction: 50});
+
+}, 5000);
+        
+setTimeout(function(){
+    console.log('Så...');
+    mapLayer.setDataset({
+        altitude: 3000,
+       altitudeAccuracy: 12 
+    });
+
+    mapLayer.setDataset({direction: null});
+
+}, 10000);
+        
+        
         };
 
 /*
@@ -118,12 +150,6 @@
             //["TEST-MARKER-1", "TEST-MARKER-2"]
             ["TEST-MARKER-1"]
         );
-
-        
-
-
-
-
 
 
     </script>
