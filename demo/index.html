@@ -21,8 +21,6 @@
     </script>
 
     <script src="bower_components.js"></script>
-    <script src="dataset.js"></script>
-    <script src="dataset-value.js"></script>
     <script src="../src/fcoo-maps-marker.js"></script>
 
     <script>
@@ -38,15 +36,15 @@
                             accuracy        : 60.123456789,
                             //accuracy        : null,
                             speed           : 20,
-                            direction       : null,
+                            direction       : 333,
                             altitude        : 3212,
-                            altitudeAccuracy: null,
+                            altitudeAccuracy: 2,
 
                             draggable: true,
 
-//HER                            datasetShowWhenNull : function(datasetValue, options){ 
-//HER                                return !options.compact;
-//HER                            },
+                            datasetShowWhenNull : function(datasetValue, options){ 
+                                return !options.compact;
+                            },
 
 
                             popupContent        : ['latLng',             'altitude',          'velocity'],
@@ -70,31 +68,38 @@
             addMenu( mapLayer.menuItemOptions() );
 
 
+            return;
+            
+            //Test af update dataset
+            setTimeout(function(){
+                mapLayer.setDataset({
+                    speed: null
+                });
+            }, 3000);
 
+            setTimeout(function(){
+                mapLayer.setDataset({
+                    altitude: 3000,
+                    altitudeAccuracy: 12,
+                    direction: 50
+                });
+            }, 6000);
         
+            setTimeout(function(){
+                mapLayer.setDataset({
+                    altitude: 3000,
+                    altitudeAccuracy: 12,
+                    speed: 123, 
+                    direction: null
+                });
+            }, 9000);
         
-setTimeout(function(){
-    console.log('Så...');
-    mapLayer.setDataset({
-        altitude: 3000,
-       altitudeAccuracy: 12 
-    });
-
-    mapLayer.setDataset({direction: 50});
-
-}, 5000);
-        
-setTimeout(function(){
-    console.log('Så...');
-    mapLayer.setDataset({
-        altitude: 3000,
-       altitudeAccuracy: 12 
-    });
-
-    mapLayer.setDataset({direction: null});
-
-}, 10000);
-        
+            setTimeout(function(){
+                mapLayer.setDataset({
+                    speed: 23, 
+                    direction: 0
+                });
+            }, 12000);
         
         };
 
