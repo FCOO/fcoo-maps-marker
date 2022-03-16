@@ -140,18 +140,14 @@
             if (markerOptions.datasetShowWhenNull)
                 datasetOptions.showWhenNull = markerOptions.datasetShowWhenNull.bind(this);
 
-            this.dataset = nsMap.dataset(
-                //List of DatasetValue
-                datasetValueList,
 
-                //Options
-                datasetOptions,
+            options.dataset = {
+                valueList: datasetValueList, //List of DatasetValue
+                options  : datasetOptions,   //Options
+                data     : markerOptions     //Data
+            };
 
-                //Data
-                markerOptions
-            );
         }
-
 
         markerOptions = L.BsMarkerBase.prototype._adjustOptions( markerOptions );
 
@@ -176,7 +172,6 @@
 
             legendOptions.content = this._createLegendContent;
             legendOptions.contentContext = this;
-
             legendOptions.noVerticalPadding = true;
             legendOptions.noHorizontalPadding = true;
         }
@@ -206,74 +201,88 @@
                 marker.on('dragend',   this._dragend,   this);
             }
 
-            this.dataset.setData(markerOptions);
             return marker;
         },
 
 
         /*****************************************************
-        setLatLng(latLng)
+        _update(options, callAllLayerMethod, arg, onlyIndexOrMapId)
+        Updates options, dataset and markers
+        onlyIndexOrMapId =
+            false: All marker gets new options
+            []MAPID: Only maps with mapId in onlyIndexOrMapId gets new options
+            true: Full update: All maps gets ALL options from this.options.layerOptions and options
         *****************************************************/
-        setDataset: function(data, callAllLayerMethod, arg){
-            $.extend(this.options.layerOptions, data);
-            this.dataset.setData(data);
+        _update: function(options, callAllLayerMethod, arg, onlyIndexOrMapId){
+            this.dataset_setData(options, onlyIndexOrMapId);
+
+            //Update layer/marker.options
+            //onlyIndexOrMapId == true => Full update
+            if (onlyIndexOrMapId === true)
+                options = this.options.layerOptions = $.extend(true, this.options.layerOptions, options);
+
+            //Update layer(=marker).options and call callAllLayerMethod (if any)
+            this.visitAllLayers( function(layer){ $.extend(layer.options, options); }, onlyIndexOrMapId );
+
             if (callAllLayerMethod)
-                this.callAllLayers( callAllLayerMethod, arg);
+                this.callAllLayers( callAllLayerMethod, arg, onlyIndexOrMapId );
+
+            return this;
         },
 
+        /*****************************************************
+        setDataset(latLng)
+        *****************************************************/
+        setDataset: function(options, callAllLayerMethod, arg, onlyIndexOrMapId){
+            return this._update(options, callAllLayerMethod, arg, onlyIndexOrMapId);
+        },
 
         /*****************************************************
         setLatLng(latLng)
         *****************************************************/
-        setLatLng: function(latLng){
-            this.setDataset({latLng: latLng}, 'setLatLng', arguments);
-//HER            this.options.layerOptions.latLng = latLng;
-//HER            this.dataset.setData({latLng: latLng});
-//HER            this.callAllLayers( 'setLatLng', arguments);
+        setLatLng: function(latLng, onlyIndexOrMapId){
+            return this._update({latLng: latLng}, 'setLatLng', [latLng], onlyIndexOrMapId);
         },
 
         /*****************************************************
         setSize
         *****************************************************/
-        setSize: function(size){
-            this.options.layerOptions.size = size;
-            return this.callAllLayers('setSize', [size]);
+        setSize: function(size, onlyIndexOrMapId){
+            return this._update({size: size}, 'setSize', [size], onlyIndexOrMapId);
         },
 
         /*****************************************************
         setDirection( direction )
         *****************************************************/
-        setDirection: function( direction ){
-            this.options.layerOptions.direction = (direction || 0) % 360;
-            this.dataset.setData({direction: direction});
-            return this.callAllLayers('setDirection', [direction]);
+        setDirection: function( direction = 0, onlyIndexOrMapId ){
+            direction = (direction || 0) % 360;
+            return this._update({direction: direction}, 'setDirection', [direction], onlyIndexOrMapId);
         },
 
         /*****************************************************
         setDeltaDirection( deltaDirection )
         *****************************************************/
-        setDeltaDirection: function( deltaDirection = 0 ){
-            return this.setDirection( this.options.layerOptions.direction + deltaDirection );
+        setDeltaDirection: function( deltaDirection = 0, onlyIndexOrMapId ){
+            return this.visitAllLayers(function(layer){ layer.setDirection(deltaDirection, true); }, onlyIndexOrMapId);
+        },
+
+        /*****************************************************
+        updateMarker
+        Update the marker regarding all options except size
+        *****************************************************/
+        updateMarker: function(options = {}, onlyIndexOrMapId){
+            return this._update(options, 'updateIcon', [options], onlyIndexOrMapId);
         },
 
         /*****************************************************
         setCenter(map)
         *****************************************************/
         setCenter: function(map){
-            map.setView(this.options.layerOptions.latLng, map.getZoom(), map._mapSync_NO_ANIMATION);
+            return map.setView(this.info[map.fcooMapIndex].layer.options.latLng, map.getZoom(), map._mapSync_NO_ANIMATION);
         },
+
         _button_onClick_setCenter: function(id, selected, $button, map){
             this.setCenter(map);
-        },
-
-
-        /*****************************************************
-        updateMarker
-        Update the marker regarding all options except size
-        *****************************************************/
-        updateMarker: function(options = {}, forceColor){
-            this.options.layerOptions = $.extend(true, this.options.layerOptions, options);
-            return this.callAllLayers('updateIcon', [this.options.layerOptions, forceColor]);
         },
 
         _drag: function(e){
@@ -300,7 +309,6 @@
                     popup.options.autoPan = popup.options._save_autoPan;
             });
         },
-
 
 
         /*****************************************************
@@ -356,23 +364,23 @@
         _sort_in_dataset
         _show_in_dataset
         *****************************************************/
-        _createPopupContent: function( $container ){
-            this.dataset.createContent( $container, {
+        _createPopupContent: function( $container, popup, map ){
+            this.getDataset(map).createContent( $container, {
                 contentFor: 'popupContent',
                 small     : true,
                 compact   : true,
             });
         },
 
-        _createPopupExtendedContent: function( $container ){
-            this.dataset.createContent( $container, {
+        _createPopupExtendedContent: function( $container, popup, map ){
+            this.getDataset(map).createContent( $container, {
                 contentFor: 'popupExtendedContent',
                 small     : true
             });
         },
 
-        _createLegendContent: function( $container ){
-            this.dataset.createContent( $container, {
+        _createLegendContent: function( $container, mapLayer, map ){
+            this.getDataset(map).createContent( $container, {
                 contentFor: 'legendContent'
             });
         },
@@ -430,7 +438,6 @@
         addMenu( mapLayer.menuItemOptions() ); //OR list of menu-items
     };
 */
-
 
 }(jQuery, L, this, document));
 

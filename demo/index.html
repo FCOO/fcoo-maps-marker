@@ -47,15 +47,19 @@
                             },
 
 
-                            popupContent        : ['latLng',             'altitude',          'velocity'],
-                            popupExtendedContent: ['latLng', 'accuracy', 'altitude_accuracy', 'velocity_extended'],
-                           
-                            _legendContent       : ['latLng', /*'accuracy', 'altitudeAccuracy',*/ 'altitude_accuracy'/*, 'velocity_extended'*/],
-                            __legendContent       : true, //['latLng', 'accuracy', /*'altitude', 'altitudeAccuracy', 'velocity'*/],
-                            legendContent       : ['latLng',  'accuracy', 'altitude_accuracy', 'altitude', 'velocity_extended'//, 'speed', 'direction', 'direction_text', 'direction_vector'
-                                                    , {id:'TEST', text:'TEST', datasetValueIdList:['direction', 'direction_text', 'direction_vector'], }
-                                                  ],
+                            _popupContent        : ['latLng',             'altitude',          'velocity'],
+                            _popupExtendedContent: ['latLng', 'accuracy', 'altitude_accuracy', 'velocity_extended'],
+                            _legendContent       : [
+                                'latLng',  'accuracy', 'altitude_accuracy', 'altitude', 'velocity_extended', 
+                                {id:'TEST', text:'TEST', datasetValueIdList:['direction', 'direction_text', 'direction_vector'], }
+                            ],
 
+                            popupContent        : ['latLng',             'altitude',          'velocity'],
+                            popupExtendedContent: ['latLng',             'altitude',          'velocity'],
+                            legendContent       : true,
+
+                            
+                            
                             inclCenterButton: true,
 
                             innerIconClass: 'fa-home',
@@ -67,15 +71,31 @@
 
             addMenu( mapLayer.menuItemOptions() );
 
+return;
+            setTimeout(function(){
+                mapLayer.updateMarker({colorName: 'green', puls: false}, [1]);
+                mapLayer.setSize('lg', [0]);
+                mapLayer.setDirection( 90, [1]);
 
-            return;
+                mapLayer.dataset_setData({speed: 44}, [2]);
+            }, 4000);
+
+
+            setTimeout(function(){
+                mapLayer.setDirection( 0 );
+            }, 6000);
+
+            setTimeout(function(){
+                mapLayer.setDeltaDirection( 30, 1 );
+                mapLayer.setLatLng( [55, 13], 1 );
+            }, 8000);
             
             //Test af update dataset
             setTimeout(function(){
                 mapLayer.setDataset({
                     speed: null
                 });
-            }, 3000);
+            }, 10000);
 
             setTimeout(function(){
                 mapLayer.setDataset({
@@ -83,7 +103,7 @@
                     altitudeAccuracy: 12,
                     direction: 50
                 });
-            }, 6000);
+            }, 12000);
         
             setTimeout(function(){
                 mapLayer.setDataset({
@@ -92,7 +112,7 @@
                     speed: 123, 
                     direction: null
                 });
-            }, 9000);
+            }, 14000);
         
             setTimeout(function(){
                 mapLayer.setDataset({
