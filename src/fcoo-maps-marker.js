@@ -193,7 +193,7 @@
             var marker = new this.options.constructor( markerOptions.latLng, markerOptions );
 
             if (this.popupContent || this.buttonList.length)
-                marker.bindPopup( this.popupOptions() );
+                marker.bindPopup( this.popupOptions(), marker.options.popupOptions );
 
             if (markerOptions.editable || markerOptions.draggable){
                 marker.on('drag',      this._drag,      this);
