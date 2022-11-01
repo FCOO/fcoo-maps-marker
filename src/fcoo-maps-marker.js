@@ -50,7 +50,7 @@
         buttonList          : [],
         inclCenterButton    : false, //Adds a 'Center' button in popup and legend
 
-
+        contextmenu         : false, //or true or []content-item. If true: just add the buttons in butonList (if any)
 
         latLng          : null,
         accuracy        : null,
@@ -201,6 +201,17 @@
                 marker.on('dragend',   this._dragend,   this);
             }
 
+            if (markerOptions.contextmenu) {
+                //If contentmenu === true use buittonList as contentmenu-items
+                var list = markerOptions.contextmenu === true ? markerOptions.buttonList : markerOptions.contextmenu;
+
+                if (list && list.length)
+                    marker.setContextmenuOptions({
+                        items :list,
+                        header: this.options.text,
+                        excludeMapContextmenu: true, //If true the map's contxtmenu-items isn't shown
+                    });
+            }
             return marker;
         },
 

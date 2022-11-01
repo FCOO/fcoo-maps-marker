@@ -58,7 +58,11 @@
                             popupExtendedContent: ['latLng',             'altitude',          'velocity'],
                             legendContent       : true,
 
-                            
+                            contextmenu: true,
+                            _contextmenu: [
+                                {id:'niels1', text: 'Niels1', onClick: function(){ alert('1'); }},
+                                {id:'niels2', text: 'Niels2', onClick: function(){ alert('2'); }}
+                            ],
                             
                             inclCenterButton: true,
 
