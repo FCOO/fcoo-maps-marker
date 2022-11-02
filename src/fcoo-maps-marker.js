@@ -179,6 +179,7 @@
 
     }
 
+
     nsMap.MapLayer_Marker = MapLayer_Marker;
     MapLayer_Marker.prototype = Object.create(nsMap.MapLayer.prototype);
 
@@ -202,7 +203,7 @@
             }
 
             if (markerOptions.contextmenu) {
-                //If contentmenu === true use buittonList as contentmenu-items
+                //If contentmenu === true use buttonList as contentmenu-items
                 var list = markerOptions.contextmenu === true ? markerOptions.buttonList : markerOptions.contextmenu;
 
                 if (list && list.length)

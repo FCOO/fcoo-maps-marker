@@ -24,6 +24,8 @@
     <script src="../src/fcoo-maps-marker.js"></script>
 
     <script>
+
+        var selected_test = false;
         //window.bsIsTouch = true;
         fcoo.map.createMapLayer["TEST-MARKER-1"] = function(options, addMenu){
             var mapLayer = 
@@ -57,6 +59,19 @@
                             popupContent        : ['latLng',             'altitude',          'velocity'],
                             popupExtendedContent: ['latLng',             'altitude',          'velocity'],
                             legendContent       : true,
+
+                            buttonList: [{
+                                    type     : 'standardcheckboxbutton',
+                                    isRadio: true,
+                                    text     : {da: 'Radio', en: 'Radio'},
+                                    class    : 'min-width your-position-follow-btn',
+                                    selected : function(){ return selected_test; },
+                                    closeOnClick: false,
+                                    onChange : function(id, selected){ selected_test = selected; },
+                                },
+                                {id:'niels1', text: 'Niels1', onClick: function(){ alert('1'); }},
+                                {id:'niels2', text: 'Niels2', onClick: function(){ alert('2'); }}
+                            ],
 
                             contextmenu: true,
                             _contextmenu: [
