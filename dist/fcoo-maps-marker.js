@@ -45,10 +45,14 @@
         popupExtendedContent: false,    //false, true (same as popupContent) or []ID or STRING of IDs = The dataset-values to include in legend.
         extendedPopupWidth  : 200,
 
+        popupMinimizedContent: false,    //false, true (same as popupContent) or []ID or STRING of IDs = The dataset-values to include in legend.
+        minimizedPopupWidth  : null,    //null = same as popupWidth
+
         legendContent       : true,     //[]ID or STRING of IDs = The values to include in legend. Default = popupContent
 
         buttonList          : [],
         inclCenterButton    : false, //Adds a 'Center' button in popup and legend
+        inclShowButton      : true, //If true and popupMinimizedContent => Add "Show"-button that open, minimizes and pinned a popup
 
         contextmenu         : false, //or true or []content-item. If true: just add the buttons in butonList (if any)
 
@@ -86,6 +90,17 @@
 
         options.buttonList = markerOptions.buttonList || [];
 
+
+        if (markerOptions.popupMinimizedContent && markerOptions.inclShowButton)
+            options.buttonList.push({
+                icon   : 'fai fai-label-center',
+                text   : {da: 'Vis', en: 'Show'},
+                context: this,
+                onClick: this.openPopupMinimized
+
+            });
+
+
         if (markerOptions.inclCenterButton)
             options.buttonList.push({
                 icon   : 'fa-crosshairs',
@@ -105,6 +120,15 @@
                 this.popupExtendedContent = markerOptions.popupExtendedContent;
         }
 
+        //Content for minimized popup
+        if (markerOptions.popupMinimizedContent){
+            if (markerOptions.popupMinimizedContent === true)
+                this.popupMinimizedContent = this.popupContent;
+            else
+                this.popupMinimizedContent = markerOptions.popupMinimizedContent;
+        }
+
+
         //Content for legend
         if (markerOptions.legendContent){
             if (markerOptions.legendContent === true)
@@ -117,7 +141,7 @@
         var _this = this,
             datasetValueIds = {},
             datasetValueList = [];
-        $.each(['popupContent', 'popupExtendedContent', 'legendContent'], function(index, contentListId){
+        $.each(['popupContent', 'popupExtendedContent', 'popupMinimizedContent', 'legendContent'], function(index, contentListId){
             $.each(_this[contentListId] || [], function(index, datasetValue_or_options_or_id){
                 var id;
                 if (typeof datasetValue_or_options_or_id == 'string')
@@ -352,7 +376,19 @@
                     content             : this._createPopupContent,
                     contentContext      : this,
                     verticalButtons     : true,
-                    buttons             : markerOptions.buttonList
+                    buttons             : markerOptions.buttonList,
+                };
+
+
+            if (this.popupMinimizedContent)
+                result.minimized = {
+                    width               : markerOptions.minimizedPopupWidth || markerOptions.popupWidth,
+                    //noVerticalPadding   : false,
+                    //noHorizontalPadding : true,
+                    scroll              : false,
+                    content             : this._createPopupMinimizedContent,
+                    contentContext      : this,
+                    verticalButtons     : false
                 };
 
             if (this.popupExtendedContent)
@@ -391,6 +427,14 @@
             });
         },
 
+        _createPopupMinimizedContent: function( $container, popup, map ){
+            this.getDataset(map).createContent( $container, {
+                contentFor: 'popupMinimizedContent',
+                small     : true,
+                compact   : true
+            });
+        },
+
         _createLegendContent: function( $container, mapLayer, map ){
             this.getDataset(map).createContent( $container, {
                 contentFor: 'legendContent'
@@ -401,9 +445,10 @@
             var sortByList; //= the sorted list of ids used for the creation
 
             switch (options.contentFor){
-                case 'popupContent'        :  sortByList = this.popupContent;         break;
-                case 'popupExtendedContent':  sortByList = this.popupExtendedContent; break;
-                case 'legendContent'       :  sortByList = this.legendContent;        break;
+                case 'popupContent'         :  sortByList = this.popupContent;          break;
+                case 'popupMinimizedContent':  sortByList = this.popupMinimizedContent; break;
+                case 'popupExtendedContent' :  sortByList = this.popupExtendedContent;  break;
+                case 'legendContent'        :  sortByList = this.legendContent;         break;
             }
             if (!sortByList) return;
 
@@ -429,8 +474,21 @@
                 result = result || (get_datasetValue_id(datasetValue_options_or_id) == id);
             });
             return result;
-        }
+        },
 
+
+        openPopupMinimized: function( id, selected, $button, map){
+            var mapIndex = nsMap.getMap(map).fcooMapIndex,
+                info     = this.info[mapIndex],
+                marker   = info ? info.layer : null,
+                popup    = marker ? marker._popup : null;
+
+            if (!popup)
+                return;
+            marker.openPopup();
+            popup._setPinned(true);
+            popup.setSizeMinimized();
+        },
 
     });
 
