@@ -431,7 +431,8 @@
             this.getDataset(map).createContent( $container, {
                 contentFor: 'popupMinimizedContent',
                 small     : true,
-                compact   : true
+                compact   : true,
+                noLinks   : true
             });
         },
 
