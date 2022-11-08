@@ -237,6 +237,7 @@
                         excludeMapContextmenu: true, //If true the map's contxtmenu-items isn't shown
                     });
             }
+
             return marker;
         },
 
