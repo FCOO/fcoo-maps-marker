@@ -93,7 +93,7 @@
 
         if (markerOptions.popupMinimizedContent && markerOptions.inclShowButton)
             options.buttonList.push({
-                icon   : 'fai fai-label-center',
+                icon   : 'far fa-message-middle',
                 text   : {da: 'Vis', en: 'Show'},
                 context: this,
                 onClick: this.openPopupMinimized
