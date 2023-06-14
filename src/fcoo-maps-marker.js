@@ -228,14 +228,22 @@
 
             if (markerOptions.contextmenu) {
                 //If contentmenu === true use buttonList as contentmenu-items
-                var list = markerOptions.contextmenu === true ? markerOptions.buttonList : markerOptions.contextmenu;
+                var useButtonListAsContextmenu = (markerOptions.contextmenu === true),
+                    list = useButtonListAsContextmenu ? markerOptions.buttonList : markerOptions.contextmenu;
 
-                if (list && list.length)
+                if (list && list.length){
                     marker.setContextmenuOptions({
                         items :list,
                         header: this.options.text,
                         excludeMapContextmenu: true, //If true the map's contxtmenu-items isn't shown
                     });
+
+                    //If the width is set in popup => use same width in context-menu
+                    if (useButtonListAsContextmenu && this.popupOptions() && this.popupOptions().width)
+                        marker.setContextmenuOptions({
+                            width: this.popupOptions().width
+                        });
+                }
             }
 
             return marker;
